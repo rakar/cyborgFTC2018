@@ -11,6 +11,7 @@ import org.montclairrobotics.cyborgftc.data.CBTankDriveRequestData;
 import org.montclairrobotics.cyborgftc.devices.CBAxis;
 import org.montclairrobotics.cyborgftc.devices.CBCoreMotorSpeedController;
 import org.montclairrobotics.cyborgftc.devices.CBDeviceId;
+import org.montclairrobotics.cyborgftc.devices.CBHardwareAdapter;
 import org.montclairrobotics.cyborgftc.devices.CBServo;
 import org.montclairrobotics.cyborgftc.mappers.CBTankDriveMapper;
 import org.montclairrobotics.cyborgftc.utils.*;

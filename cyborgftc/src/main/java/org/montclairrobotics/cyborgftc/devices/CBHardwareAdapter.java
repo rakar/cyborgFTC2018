@@ -1,29 +1,8 @@
-package org.montclairrobotics.cyborgftc;
+package org.montclairrobotics.cyborgftc.devices;
 
 import java.util.ArrayList;
 
-import org.montclairrobotics.cyborgftc.devices.CBAccelerationSensor;
-import org.montclairrobotics.cyborgftc.devices.CBAnalogInput;
-import org.montclairrobotics.cyborgftc.devices.CBAnalogOutput;
-import org.montclairrobotics.cyborgftc.devices.CBAxis;
-import org.montclairrobotics.cyborgftc.devices.CBButton;
-import org.montclairrobotics.cyborgftc.devices.CBColorSensor;
-import org.montclairrobotics.cyborgftc.devices.CBCompassSensor;
-import org.montclairrobotics.cyborgftc.devices.CBCoreMotorSpeedController;
-import org.montclairrobotics.cyborgftc.devices.CBDevice;
-import org.montclairrobotics.cyborgftc.devices.CBDeviceId;
-import org.montclairrobotics.cyborgftc.devices.CBDigitalChannel;
-import org.montclairrobotics.cyborgftc.devices.CBGyroSensor;
-import org.montclairrobotics.cyborgftc.devices.CBIrSeekerSensor;
-import org.montclairrobotics.cyborgftc.devices.CBJoystick;
-import org.montclairrobotics.cyborgftc.devices.CBLed;
-import org.montclairrobotics.cyborgftc.devices.CBLightSensor;
-import org.montclairrobotics.cyborgftc.devices.CBOpticalDistanceSensor;
-import org.montclairrobotics.cyborgftc.devices.CBPWMOutput;
-import org.montclairrobotics.cyborgftc.devices.CBPov;
-import org.montclairrobotics.cyborgftc.devices.CBServo;
-import org.montclairrobotics.cyborgftc.devices.CBSpeedController;
-import org.montclairrobotics.cyborgftc.devices.CBTouchSensor;
+import org.montclairrobotics.cyborgftc.Cyborg;
 import org.montclairrobotics.cyborgftc.utils.CBEnums;
 import org.montclairrobotics.cyborgftc.utils.CBModule;
 

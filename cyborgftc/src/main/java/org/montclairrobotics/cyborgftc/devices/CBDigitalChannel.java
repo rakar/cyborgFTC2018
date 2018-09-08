@@ -20,7 +20,7 @@ public class CBDigitalChannel extends CBEdgeTrigger implements CBDevice {
         digitalChannel = Cyborg.hardwareAdapter.robot.hardwareMap.digitalChannel.get(name);
     }
 
-    public CBDigitalChannel setMode(DigitalChannelController.Mode mode) {
+    public CBDigitalChannel setMode(DigitalChannel.Mode mode) {
         digitalChannel.setMode(mode);
         return  this;
     }
@@ -40,7 +40,7 @@ public class CBDigitalChannel extends CBEdgeTrigger implements CBDevice {
         return  this;
     }
 
-    public DigitalChannelController.Mode getMode() {
+    public DigitalChannel.Mode getMode() {
         return digitalChannel.getMode();
     }
 
@@ -67,7 +67,7 @@ public class CBDigitalChannel extends CBEdgeTrigger implements CBDevice {
 
     @Override
     public void senseUpdate() {
-        if(digitalChannel.getMode()== DigitalChannelController.Mode.INPUT) {
+        if(digitalChannel.getMode()== DigitalChannel.Mode.INPUT) {
             update(digitalChannel.getState());
         }
     }

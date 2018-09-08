@@ -1,4 +1,4 @@
-package org.montclairrobotics.cyborgftc;
+package org.montclairrobotics.cyborgftc.behaviors;
 
 import org.montclairrobotics.cyborgftc.Cyborg;
 import org.montclairrobotics.cyborgftc.utils.CBModule;
