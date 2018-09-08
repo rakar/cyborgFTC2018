@@ -1,9 +1,9 @@
 package org.firstinspires.ftc.teamcode;
 
-import org.montclairrobotics.cyborgftc.Cyborg;
-import org.montclairrobotics.cyborgftc.devices.CBAxis;
-import org.montclairrobotics.cyborgftc.devices.CBDeviceId;
-import org.montclairrobotics.cyborgftc.mappers.CBTeleOpMapper;
+import org.montclairrobotics.cyborg.Cyborg;
+import org.montclairrobotics.cyborg.devices.CBAxis;
+import org.montclairrobotics.cyborg.devices.CBDeviceID;
+import org.montclairrobotics.cyborg.mappers.CBTeleOpMapper;
 
 /**
  * Created by rich on 9/24/2016.
@@ -18,7 +18,7 @@ public class VVTeleOpMapper extends CBTeleOpMapper {
         crd = (VVCustomRequestData)Cyborg.customRequestData;
     }
 
-    public VVTeleOpMapper setTriggerAxis(CBDeviceId trigAxis) {
+    public VVTeleOpMapper setTriggerAxis(CBDeviceID trigAxis) {
         triggerAxis = Cyborg.hardwareAdapter.getAxis(trigAxis);
         return this;
     }

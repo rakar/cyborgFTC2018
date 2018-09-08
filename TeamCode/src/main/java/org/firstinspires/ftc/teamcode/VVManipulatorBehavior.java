@@ -1,7 +1,7 @@
 package org.firstinspires.ftc.teamcode;
 
-import org.montclairrobotics.cyborgftc.Cyborg;
-import org.montclairrobotics.cyborgftc.behaviors.CBBehavior;
+import org.montclairrobotics.cyborg.Cyborg;
+import org.montclairrobotics.cyborg.behaviors.CBBehavior;
 
 /**
  * Created by rich on 9/24/2016.

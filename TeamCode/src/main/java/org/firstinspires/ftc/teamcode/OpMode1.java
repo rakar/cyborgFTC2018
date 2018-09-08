@@ -2,7 +2,7 @@ package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
-import org.montclairrobotics.cyborgftc.Cyborg;
+import org.montclairrobotics.cyborg.Cyborg;
 
 @TeleOp
 public class OpMode1 extends Cyborg {

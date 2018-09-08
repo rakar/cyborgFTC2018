@@ -2,7 +2,7 @@ package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
-import org.montclairrobotics.cyborgftc.behaviors.CBQuickAutoBehavior;
+import org.montclairrobotics.cyborg.behaviors.CBQuickAutoBehavior;
 
 /**
  * Created by rich on 9/24/2016.

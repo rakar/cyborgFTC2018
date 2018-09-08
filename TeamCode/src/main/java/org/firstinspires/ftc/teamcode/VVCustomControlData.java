@@ -1,6 +1,6 @@
 package org.firstinspires.ftc.teamcode;
 
-import org.montclairrobotics.cyborgftc.data.CBCustomControlData;
+import org.montclairrobotics.cyborg.data.CBCustomControlData;
 
 /**
  * Created by rich on 9/24/2016.

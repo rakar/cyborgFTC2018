@@ -1,21 +1,22 @@
 package org.firstinspires.ftc.teamcode;
 
-import org.montclairrobotics.cyborgftc.*;
-import org.montclairrobotics.cyborgftc.assemblies.CBDriveModule;
-import org.montclairrobotics.cyborgftc.assemblies.CBVictorArrayController;
-import org.montclairrobotics.cyborgftc.behaviors.*;
-import org.montclairrobotics.cyborgftc.controllers.CBDifferentialDriveController;
-import org.montclairrobotics.cyborgftc.data.CBDifferentialDriveControlData;
-import org.montclairrobotics.cyborgftc.data.CBLogicData;
-import org.montclairrobotics.cyborgftc.data.CBTankDriveRequestData;
-import org.montclairrobotics.cyborgftc.devices.CBAxis;
-import org.montclairrobotics.cyborgftc.devices.CBCoreMotorSpeedController;
-import org.montclairrobotics.cyborgftc.devices.CBDeviceId;
-import org.montclairrobotics.cyborgftc.devices.CBHardwareAdapter;
-import org.montclairrobotics.cyborgftc.devices.CBServo;
-import org.montclairrobotics.cyborgftc.mappers.CBTankDriveMapper;
-import org.montclairrobotics.cyborgftc.utils.*;
-import org.montclairrobotics.cyborgftc.utils.CBEnums.CBDriveMode;
+import org.montclairrobotics.cyborg.Cyborg;
+import org.montclairrobotics.cyborg.behaviors.CBTankDriveBehavior;
+import org.montclairrobotics.cyborg.utils.CB2DVector;
+import org.montclairrobotics.cyborg.utils.CBEnums;
+import org.montclairrobotics.cyborg.assemblies.CBDriveModule;
+import org.montclairrobotics.cyborg.assemblies.CBVictorArrayController;
+import org.montclairrobotics.cyborg.controllers.CBDifferentialDriveController;
+import org.montclairrobotics.cyborg.data.CBDifferentialDriveControlData;
+import org.montclairrobotics.cyborg.data.CBLogicData;
+import org.montclairrobotics.cyborg.data.CBTankDriveRequestData;
+import org.montclairrobotics.cyborg.devices.CBAxis;
+import org.montclairrobotics.cyborg.devices.CBCoreMotorSpeedController;
+import org.montclairrobotics.cyborg.devices.CBDeviceID;
+import org.montclairrobotics.cyborg.devices.CBHardwareAdapter;
+import org.montclairrobotics.cyborg.devices.CBServo;
+import org.montclairrobotics.cyborg.mappers.CBTankDriveMapper;
+import org.montclairrobotics.cyborg.utils.CBEnums.CBDriveMode;
 
 /**
  * 
@@ -32,7 +33,7 @@ public abstract class VVRobot extends Cyborg {
 	// This should include all of the active devices
 	//
 	private class SHDevices {
-		private CBDeviceId 
+		private CBDeviceID
 			//TODO: Create Device variables
 			driveMotorLeft1,
 			driveMotorRight1,
