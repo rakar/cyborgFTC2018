@@ -1,6 +1,6 @@
 package org.montclairrobotics.cyborg.mappers;
 
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+//import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.montclairrobotics.cyborg.Cyborg;
 import org.montclairrobotics.cyborg.data.CBDriveRequestData;
 import org.montclairrobotics.cyborg.data.CBStdDriveRequestData;
@@ -66,6 +66,6 @@ public class CBArcadeDriveMapper extends CBTeleOpMapper {
         drd.direction.setXY(xScale * strAxis.get(), yScale * fwdAxis.get());
         drd.rotation = rScale * rotAxis.get();
         drd.gyroLockActive = gyroLock.getState();
-        SmartDashboard.putNumber("Mapper speed:", drd.direction.getY());
+        //SmartDashboard.putNumber("Mapper speed:", drd.direction.getY());
     }
 }

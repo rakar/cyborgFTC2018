@@ -90,7 +90,7 @@ public abstract class VVRobot extends Cyborg {
 		// Tank Drive Stick Input Example...
 		telemetry.addLine("adding TeleOpMapper");
 		this.addTeleOpMapper(
-				new CBTankDriveMapper(this, devices.forwardAxis, devices.forward2Axis)
+				new CBTankDriveMapper(this, driveRequestData, devices.forwardAxis, devices.forward2Axis)
 				.setDeadZone(0.1)
 				);
 
@@ -115,7 +115,7 @@ public abstract class VVRobot extends Cyborg {
 		//
 		telemetry.addLine("adding Output Controllers");
 		this.addRobotController(
-				new CBDifferentialDriveController(this)
+				new CBDifferentialDriveController(this, driveControlData)
 				.addDriveModule(
 						new CBDriveModule(new CB2DVector(-3,0), 0)
 						.addSpeedControllerArray(
@@ -144,7 +144,12 @@ public abstract class VVRobot extends Cyborg {
 		// Behavior Processors
 		//
 		telemetry.addLine("adding Behavior Processors");
-		this.addBehavior(new CBTankDriveBehavior(this));
+		this.addBehavior(
+				new CBTankDriveBehavior(this,
+					(CBTankDriveRequestData)driveRequestData,
+					(CBDifferentialDriveControlData)driveControlData
+				)
+		);
 		this.addBehavior(new VVManipulatorBehavior(this));
 
 
