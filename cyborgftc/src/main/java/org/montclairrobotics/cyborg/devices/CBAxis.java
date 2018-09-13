@@ -11,6 +11,10 @@ public class CBAxis extends CBAxisRef implements CBDevice {
 	double scale=1.0;
 	CBJoystick joystick;
 
+	public CBAxis(CBAxisRef axis) {
+		this(axis.stickID,axis.index);
+	}
+
 	public CBAxis(CBEnums.CBJoystickId stickID, CBEnums.CBAxisId index) {
 		super(stickID, index);
 		joystick = Cyborg.hardwareAdapter.getJoystick(stickID);
@@ -30,6 +34,12 @@ public class CBAxis extends CBAxisRef implements CBDevice {
 		this.smoothing = smoothing;
 		return this;
 	}
+
+	public static CBAxis getDefaulted(CBAxis axis) {
+		return (axis != null) ? axis : new CBAxis(CBAxisRef.undefined());
+	}
+
+
 
 	@Override
 	public void configure() {

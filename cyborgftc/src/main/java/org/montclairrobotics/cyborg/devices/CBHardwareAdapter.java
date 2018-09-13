@@ -110,9 +110,16 @@ public class CBHardwareAdapter extends CBModule {
     public CBAxis getAxis(CBDeviceID id) {
         return (CBAxis)getDevice(id);
     }
+    public CBAxis getDefaultedAxis(CBDeviceID id) {
+        return CBAxis.getDefaulted((CBAxis)getDevice(id));
+    }
+
 
     public CBButton getButton(CBDeviceID id) {
         return (CBButton)getDevice(id);
+    }
+    public CBButton getDefaultedButton(CBDeviceID id) {
+        return CBButton.getDefaulted((CBButton)getDevice(id));
     }
 
     public CBColorSensor getColorSensor(CBDeviceID id) {
@@ -129,6 +136,10 @@ public class CBHardwareAdapter extends CBModule {
 
     public CBDigitalChannel getDigitalChannel(CBDeviceID id) {
         return (CBDigitalChannel)getDevice(id);
+    }
+
+    public CBDigitalInput getDigitalInput(CBDeviceID id) {
+        return (CBDigitalInput)getDevice(id);
     }
 
     public CBEncoder getEncoder(CBDeviceID id) {
