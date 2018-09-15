@@ -25,7 +25,7 @@ public class VVManipulatorController extends CBRobotController {
 
     @Override
     public void update() {
-        servo.setPosition(ccd.serverPos);
+        servo.setPosition(ccd.servoPos);
     }
 
     @Override

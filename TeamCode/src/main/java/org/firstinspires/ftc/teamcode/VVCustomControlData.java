@@ -7,5 +7,5 @@ import org.montclairrobotics.cyborg.data.CBCustomControlData;
  */
 
 public class VVCustomControlData extends CBCustomControlData {
-    double serverPos=0;
+    double servoPos =0;
 }

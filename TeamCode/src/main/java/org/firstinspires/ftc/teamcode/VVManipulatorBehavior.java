@@ -24,7 +24,7 @@ public class VVManipulatorBehavior extends CBBehavior {
 
     @Override
     public void update() {
-        ccd.serverPos = Math.abs(crd.trigger);
-        robot.telemetry.addData("behaviorTrigger:", ccd.serverPos);
+        ccd.servoPos = Math.abs(crd.trigger);
+        robot.telemetry.addData("behaviorTrigger:", ccd.servoPos);
     }
 }

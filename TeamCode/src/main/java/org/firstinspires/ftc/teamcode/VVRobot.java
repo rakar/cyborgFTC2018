@@ -21,6 +21,11 @@ import org.montclairrobotics.cyborg.utils.CBEnums.CBDriveMode;
 /**
  * 
  * This is the main robot definition class.
+ * This class exists so that all of the opmodes
+ * (teleop and autonomous) can use a common
+ * robot configuration. Since the robot is
+ * the same, this will likely be the same for
+ * all opmodes.
  * 
  */
 public abstract class VVRobot extends Cyborg {
@@ -99,16 +104,6 @@ public abstract class VVRobot extends Cyborg {
 				new VVTeleOpMapper(this)
 				.setTriggerAxis(devices.triggerAxis)
 				);
-		
-		// Use custom mappers for sensor/full-time mapping
-//		this.addCustomMapper(
-//				new SHSensorMapper(this)
-//				.setAutoChooser(devices.autoSelect)
-//				.setContourRpt(devices.visionPipeline)
-//				.setGyroLockSource(devices.navx)
-//				.setDriveEncoders(devices.driveEncoderLeft, devices.driveEncoderRight)
-//				);
-
 		
 		//
 		// Output Controller Initialization
