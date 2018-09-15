@@ -36,19 +36,19 @@ public abstract class VVRobot extends Cyborg {
 	//
 	// List Custom Hardware Devices...
 	// This should include all of the active devices
+	// These are public static so that they can be accessed
+	// by truly custom mappers. Generic mappers should
+	// use setters so that inputs are not fixed.
 	//
-	private class SHDevices {
-		private CBDeviceID
-			//TODO: Create Device variables
-			driveMotorLeft1,
-			driveMotorRight1,
-			forwardAxis,
-			forward2Axis,
-			triggerAxis,
-			triggerServo
-			;
-	}
-	private SHDevices devices = new SHDevices();
+	public static CBDeviceID
+		//TODO: Create Device variables
+		driveMotorLeft1,driveMotorLeft2,
+		driveMotorRight1,driveMotorRight2,
+		forwardAxis,
+		forward2Axis,
+		triggerAxis,
+		triggerServo
+		;
 
 	@Override
 	public void cyborgInit() {
@@ -78,15 +78,17 @@ public abstract class VVRobot extends Cyborg {
 
 		// VVRobot Hardware
 		telemetry.addLine("adding Motor Controllers");
-		devices.driveMotorLeft1		= ha.add(new CBCoreMotorSpeedController("left_drive"));
-		devices.driveMotorRight1	= ha.add(new CBCoreMotorSpeedController("right_drive"));
-		devices.triggerServo        = ha.add(new CBServo("arm_servo").setRange(0,1));
+		driveMotorLeft1		= ha.add(new CBCoreMotorSpeedController("left_driveF"));
+		driveMotorRight1	= ha.add(new CBCoreMotorSpeedController("right_driveF"));
+		driveMotorLeft2		= ha.add(new CBCoreMotorSpeedController("left_driveR"));
+		driveMotorRight2	= ha.add(new CBCoreMotorSpeedController("right_driveR"));
+		triggerServo        = ha.add(new CBServo("arm_servo").setRange(0,1));
 
 		// Driver's Station Controls
 		telemetry.addLine("adding Driver's Station Controls");
-		devices.forwardAxis 	= ha.add(new CBAxis(driveStickId, CBEnums.CBAxisId.Left_Y).setDeadzone(0.1));
-		devices.forward2Axis 	= ha.add(new CBAxis(driveStickId, CBEnums.CBAxisId.Right_Y).setDeadzone(0.1));
-		devices.triggerAxis     = ha.add(new CBAxis(operStickId, CBEnums.CBAxisId.Right_Y).setDeadzone(0.0));
+		forwardAxis 	= ha.add(new CBAxis(driveStickId, CBEnums.CBAxisId.Left_Y).setDeadzone(0.1));
+		forward2Axis 	= ha.add(new CBAxis(driveStickId, CBEnums.CBAxisId.Right_Y).setDeadzone(0.1));
+		triggerAxis     = ha.add(new CBAxis(operStickId, CBEnums.CBAxisId.Right_Y).setDeadzone(0.0));
 
 		//
 		// Input Mapper Initialization
@@ -95,14 +97,14 @@ public abstract class VVRobot extends Cyborg {
 		// Tank Drive Stick Input Example...
 		telemetry.addLine("adding TeleOpMapper");
 		this.addTeleOpMapper(
-				new CBTankDriveMapper(this, driveRequestData, devices.forwardAxis, devices.forward2Axis)
+				new CBTankDriveMapper(this, driveRequestData, forwardAxis, forward2Axis)
 				.setDeadZone(0.1)
 				);
 
 		// Use teleOp mappers for operator mapping
 		this.addTeleOpMapper(
 				new VVTeleOpMapper(this)
-				.setTriggerAxis(devices.triggerAxis)
+				.setTriggerAxis(triggerAxis)
 				);
 		
 		//
@@ -116,7 +118,8 @@ public abstract class VVRobot extends Cyborg {
 						.addSpeedControllerArray(
 								new CBVictorArrayController()
 								.setDriveMode(CBDriveMode.Power)
-								.addSpeedController(devices.driveMotorLeft1)
+								.addSpeedController(driveMotorLeft1)
+								.addSpeedController(driveMotorLeft2)
 								)
 						)
 				.addDriveModule(
@@ -124,14 +127,15 @@ public abstract class VVRobot extends Cyborg {
 						.addSpeedControllerArray(
 								new CBVictorArrayController()
 								.setDriveMode(CBDriveMode.Power)
-								.addSpeedController(devices.driveMotorRight1)
+								.addSpeedController(driveMotorRight1)
+								.addSpeedController(driveMotorRight2)
 								)
 						)
 				);
 				
 		this.addRobotController(
 				new VVManipulatorController(this)
-				.setTrigServer(devices.triggerServo)
+				.setTrigServer(triggerServo)
 				);
 
 		
