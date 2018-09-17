@@ -253,15 +253,18 @@ public class CBLiftController extends CBRobotController {
         }
     }
 
-    public CBLiftController(Cyborg robot) {
+    public CBLiftController(Cyborg robot, CBLiftControlData data) {
         super(robot);
+        cd = data;
         sm = new CBLiftStateMachine();
     }
 
+    /*
     public CBLiftController setData(CBLiftControlData data) {
         cd = data;
         return this;
     }
+    */
 
     public CBLiftController setSpeedControllerArray(CBSpeedControllerArrayController array) {
         speedControllerArray = array;

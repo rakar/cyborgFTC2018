@@ -32,9 +32,9 @@ public abstract class Cyborg extends OpMode {
     // Data Stores represent high-level meaningful messages
     //public static CBDriveRequestData driveRequestData;
     //public static CBDriveControlData driveControlData;
-    public static CBRequestData requestData;
-    public static CBControlData controlData;
-    public static CBLogicData logicData;
+    //public static CBRequestData requestData;
+    //public static CBControlData controlData;
+    //public static CBLogicData logicData;
 
 
     // Mapper/Controller Queues

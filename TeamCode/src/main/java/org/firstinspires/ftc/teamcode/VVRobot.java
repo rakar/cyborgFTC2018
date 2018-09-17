@@ -31,6 +31,12 @@ public abstract class VVRobot extends Cyborg {
 	final static CBEnums.CBJoystickId driveStickId = CBEnums.CBJoystickId.Left;
 	final static CBEnums.CBJoystickId operStickId = CBEnums.CBJoystickId.Right;
 
+	//
+	// Data Initialization
+	//
+	VVRequestData requestData = new VVRequestData();
+	VVControlData controlData = new VVControlData();
+	CBLogicData logicData = new CBLogicData();
 
 	//
 	// List Custom Hardware Devices...
@@ -51,22 +57,6 @@ public abstract class VVRobot extends Cyborg {
 
 	@Override
 	public void cyborgInit() {
-
-		//
-		// Data Initialization
-		//
-		// Initialize data stores
-		// The drive and general data stores are separated 
-		// because the drive stores will most likely be 
-		// pre-built and the custom ones will handle 
-		// robot specific data requirements. 
-		// 
-		// TODO: Instantiate data stores
-		//driveRequestData 	= new CBTankDriveRequestData();
-		//driveControlData	= new CBDifferentialDriveControlData();
-		requestData = new VVRequestData();
-		controlData = new VVControlData();
-		logicData 			= new CBLogicData();
 
 		telemetry.addLine("Configure Hardware Adapter");
 		// Configure Hardware Adapter
@@ -96,7 +86,7 @@ public abstract class VVRobot extends Cyborg {
 		// Tank Drive Stick Input Example...
 		telemetry.addLine("adding TeleOpMapper");
 		this.addTeleOpMapper(
-				new CBTankDriveMapper(this, ((VVRequestData)requestData).drivetrain, forwardAxis, forward2Axis)
+				new CBTankDriveMapper(this, requestData.drivetrain, forwardAxis, forward2Axis)
 				.setDeadZone(0.1)
 				);
 
@@ -111,7 +101,7 @@ public abstract class VVRobot extends Cyborg {
 		//
 		telemetry.addLine("adding Output Controllers");
 		this.addRobotController(
-				new CBDifferentialDriveController(this, ((VVControlData)controlData).drivetrain)
+				new CBDifferentialDriveController(this, controlData.drivetrain)
 				.addDriveModule(
 						new CBDriveModule(new CB2DVector(-3,0), 0)
 						.addSpeedControllerArray(
@@ -144,8 +134,8 @@ public abstract class VVRobot extends Cyborg {
 		telemetry.addLine("adding Behavior Processors");
 		this.addBehavior(
 				new CBTankDriveBehavior(this,
-					((VVRequestData)requestData).drivetrain,
-					((VVControlData)controlData).drivetrain
+					requestData.drivetrain,
+					controlData.drivetrain
 				)
 		);
 		this.addBehavior(new VVManipulatorBehavior(this));

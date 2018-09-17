@@ -13,9 +13,9 @@ public class VVTeleOpMapper extends CBTeleOpMapper {
     CBAxis triggerAxis;
     VVRequestData crd;
 
-    public VVTeleOpMapper(Cyborg robot) {
+    public VVTeleOpMapper(VVRobot robot) {
         super(robot);
-        crd = (VVRequestData)Cyborg.requestData;
+        crd = robot.requestData;
     }
 
     public VVTeleOpMapper setTriggerAxis(CBDeviceID trigAxis) {

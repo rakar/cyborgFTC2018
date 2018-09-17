@@ -13,9 +13,9 @@ public class VVManipulatorController extends CBRobotController {
     CBServo servo;
     VVControlData ccd;
 
-    public VVManipulatorController(Cyborg robot) {
+    public VVManipulatorController(VVRobot robot) {
         super(robot);
-        ccd = (VVControlData)Cyborg.controlData;
+        ccd = robot.controlData;
     }
 
     public VVManipulatorController setTrigServer(CBDeviceID deviceId) {

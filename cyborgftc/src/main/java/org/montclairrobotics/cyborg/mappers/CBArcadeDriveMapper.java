@@ -17,7 +17,6 @@ public class CBArcadeDriveMapper extends CBTeleOpMapper {
 
 	public CBArcadeDriveMapper(Cyborg robot, CBStdDriveRequestData requestData) {
 		super(robot);
-		//setRequestData(Cyborg.requestData.driveData);
 		drd = requestData;
 	}
 
@@ -39,13 +38,6 @@ public class CBArcadeDriveMapper extends CBTeleOpMapper {
 		
 		return this;
 	}
-
-	/*
-	public CBArcadeDriveMapper setRequestData(CBDriveRequestData data) {
-		drd = data;
-		return this;
-	}
-	*/
 
 	public CBArcadeDriveMapper setGyroLockButton(CBDeviceID buttonDeviceID) {
 		this.gyroLock = Cyborg.hardwareAdapter.getDefaultedButton(buttonDeviceID);

@@ -24,17 +24,9 @@ public class CBDifferentialDriveController extends CBDriveController implements 
 	public CBDifferentialDriveController(Cyborg robot, CBDriveControlData controlData) {
 		super(robot);
 		driveModules = null;
-		//dcd = Cyborg.controlData.driveData;
 		dcd = controlData;
 	}
 
-	/*
-	public CBDifferentialDriveController setControlData(CBDriveControlData data) {
-		dcd = data;
-		return this;
-	}
-	*/
-	
 	@Override
 	public void update() {
 		if(dcd.active) {

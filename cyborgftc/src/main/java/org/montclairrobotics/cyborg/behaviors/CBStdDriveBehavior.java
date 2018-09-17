@@ -19,24 +19,6 @@ public class CBStdDriveBehavior extends CBBehavior {
 		gyroLockState = new CBEdgeTrigger();
 	}
 
-	/*
-	public CBStdDriveBehavior setData(CBStdDriveRequestData requestData, CBStdDriveControlData controlData) {
-		drd = requestData;
-		dcd = controlData;
-		return this;
-	}
-
-	public CBStdDriveBehavior setRequestData(CBStdDriveRequestData data) {
-		drd = data;
-		return this;
-	}
-
-	public CBStdDriveBehavior setControlData(CBStdDriveControlData data) {
-		dcd = data;
-		return this;
-	}
-	*/
-
 	public CBStdDriveBehavior setGyroLockTracker(CBErrorCorrection pid) {
 		this.gyroLockTracker = pid;
 		return this;

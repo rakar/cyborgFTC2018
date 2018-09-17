@@ -11,10 +11,10 @@ public class VVManipulatorBehavior extends CBBehavior {
     VVRequestData crd;
     VVControlData ccd;
 
-    public VVManipulatorBehavior(Cyborg robot) {
+    public VVManipulatorBehavior(VVRobot robot) {
         super(robot);
-        crd = (VVRequestData)Cyborg.requestData;
-        ccd = (VVControlData)Cyborg.controlData;
+        crd = robot.requestData;
+        ccd = robot.controlData;
     }
 
     @Override

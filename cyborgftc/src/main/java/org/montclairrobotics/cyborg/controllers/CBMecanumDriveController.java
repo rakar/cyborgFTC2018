@@ -38,21 +38,9 @@ public class CBMecanumDriveController extends CBDriveController {
 
 	public CBMecanumDriveController(Cyborg robot, CBStdDriveControlData controlData) {
 		super(robot);
-        //setControlData(Cyborg.controlData.driveData);
 		dcd = controlData;
 		System.err.println("Warning: CBMecanumDriveController implementation is highly experimental.");
 	}
-
-	/*
-	public CBMecanumDriveController setControlData(CBDriveControlData data) {
-		if (data instanceof CBStdDriveControlData) {
-			dcd = (CBStdDriveControlData) data;
-		} else {
-			throw new RuntimeException("Error: Invalid DriveControlData type for CBMecanumDriveController");
-		}
-		return  this;
-	}
-	*/
 
 	@Override
 	public void update() {
