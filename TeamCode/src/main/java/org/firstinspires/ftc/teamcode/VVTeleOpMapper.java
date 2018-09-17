@@ -11,11 +11,11 @@ import org.montclairrobotics.cyborg.mappers.CBTeleOpMapper;
 
 public class VVTeleOpMapper extends CBTeleOpMapper {
     CBAxis triggerAxis;
-    VVCustomRequestData crd;
+    VVRequestData crd;
 
     public VVTeleOpMapper(Cyborg robot) {
         super(robot);
-        crd = (VVCustomRequestData)Cyborg.customRequestData;
+        crd = (VVRequestData)Cyborg.requestData;
     }
 
     public VVTeleOpMapper setTriggerAxis(CBDeviceID trigAxis) {

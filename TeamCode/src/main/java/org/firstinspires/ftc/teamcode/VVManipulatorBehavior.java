@@ -8,13 +8,13 @@ import org.montclairrobotics.cyborg.behaviors.CBBehavior;
  */
 
 public class VVManipulatorBehavior extends CBBehavior {
-    VVCustomRequestData crd;
-    VVCustomControlData ccd;
+    VVRequestData crd;
+    VVControlData ccd;
 
     public VVManipulatorBehavior(Cyborg robot) {
         super(robot);
-        crd = (VVCustomRequestData)Cyborg.customRequestData;
-        ccd = (VVCustomControlData)Cyborg.customControlData;
+        crd = (VVRequestData)Cyborg.requestData;
+        ccd = (VVControlData)Cyborg.controlData;
     }
 
     @Override

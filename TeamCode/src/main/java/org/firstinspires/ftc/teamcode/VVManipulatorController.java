@@ -11,11 +11,11 @@ import org.montclairrobotics.cyborg.devices.CBServo;
 
 public class VVManipulatorController extends CBRobotController {
     CBServo servo;
-    VVCustomControlData ccd;
+    VVControlData ccd;
 
     public VVManipulatorController(Cyborg robot) {
         super(robot);
-        ccd = (VVCustomControlData)Cyborg.customControlData;
+        ccd = (VVControlData)Cyborg.controlData;
     }
 
     public VVManipulatorController setTrigServer(CBDeviceID deviceId) {
