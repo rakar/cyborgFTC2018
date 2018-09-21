@@ -253,9 +253,10 @@ public class CBLiftController extends CBRobotController {
         }
     }
 
-    public CBLiftController(Cyborg robot, CBLiftControlData data) {
+    public CBLiftController(Cyborg robot, CBLiftControlData data, CBSpeedControllerArrayController array) {
         super(robot);
         cd = data;
+        speedControllerArray = array;
         sm = new CBLiftStateMachine();
     }
 
@@ -264,42 +265,48 @@ public class CBLiftController extends CBRobotController {
         cd = data;
         return this;
     }
-    */
 
     public CBLiftController setSpeedControllerArray(CBSpeedControllerArrayController array) {
         speedControllerArray = array;
         return this;
     }
+    */
 
     public CBLiftController setTopLimit(CBDeviceID limitID) {
         this.topLimitSwitch = Cyborg.hardwareAdapter.getDigitalInput(limitID);
         return this;
     }
 
+    /*
     public CBLiftController setTopLimit(CBDigitalInput limit) {
         this.topLimitSwitch = limit;
         return this;
     }
+    */
 
     public CBLiftController setBottomLimit(CBDeviceID limitID) {
         this.bottomLimitSwitch = Cyborg.hardwareAdapter.getDigitalInput(limitID);
         return this;
     }
 
+    /*
     public CBLiftController setBottomLimit(CBDigitalInput limit) {
         this.bottomLimitSwitch = limit;
         return this;
     }
+    */
 
     public CBLiftController setEncoder(CBDeviceID deviceID) {
         this.encoder = Cyborg.hardwareAdapter.getEncoder(deviceID);
         return this;
     }
 
+    /*
     public CBLiftController setEncoder(CBEncoder device) {
         this.encoder = device;
         return this;
     }
+    */
 
     public CBLiftController setErrorCorrection(CBErrorCorrection errorCorrection) {
         this.errorCorrection = errorCorrection;
