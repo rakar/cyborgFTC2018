@@ -13,11 +13,12 @@ public class CBPIDErrorCorrection implements CBErrorCorrection {
 	private double holdValue;
 	private double correction;
 	private CBOnTargetMode onTargetMode = CBOnTargetMode.Zero;
+	private CBSource pidSource;
 
 	/**
-	 * @param P the Proportional Constant
-	 * @param I the Integral Constant
-	 * @param D the Derivative Constant
+	 * x@param P the Proportional Constant
+	 * x@param I the Integral Constant
+	 * x@param D the Derivative Constant
 	 */
 	public CBPIDErrorCorrection()
 	{
@@ -159,7 +160,12 @@ public class CBPIDErrorCorrection implements CBErrorCorrection {
 
 		return correction;
 	}
-	
+
+	public double update() {
+		if(pidSource==null) return update(0.0);
+		return update(pidSource.get());
+	}
+
 	/* (non-Javadoc)
 	 * @see org.montclairrobotics.cyborg.utils.CBErrorCorrection#update(double)
 	 */

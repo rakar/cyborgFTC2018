@@ -1,15 +1,16 @@
 package org.montclairrobotics.cyborg.devices;
 
-import com.qualcomm.robotcore.hardware.DcMotor;
-
-import java.util.ArrayList;
 import static java.lang.System.currentTimeMillis;
 
-import org.montclairrobotics.cyborg.Cyborg;
-import org.montclairrobotics.cyborg.utils.CBSource;
+public class CBEncoder extends CBEncoderBase {
 
-public class CBEncoder implements CBSource, CBDevice {
-	private DcMotor mc;
+	public CBEncoder(String name, boolean reversed, double distancePerPulse) {
+		super(name, reversed, distancePerPulse);
+		setReverseDirection(reversed);
+		//setTickConversion(EncodingType.k4X);
+		setDistancePerPulse(distancePerPulse);
+	}
+
 	//private CBIEncoder encoder;
 	private int edgeValue =0;
 	private int pulseValue = 0;
@@ -64,13 +65,6 @@ public class CBEncoder implements CBSource, CBDevice {
 		}
 	}
 	*/
-
-	public CBEncoder(String name, boolean reversed, double distancePerPulse) {
-		mc = Cyborg.hardwareAdapter.robot.hardwareMap.dcMotor.get(name); //   new CBSrxEncoder(Cyborg.hardwareAdapter.getTalonSRX(talonSrx), encoderType, false, distancePerPulse);
-        setReverseDirection(reversed);
-        //setTickConversion(EncodingType.k4X);
-        setDistancePerPulse(distancePerPulse);
-	}
 
 	/*
 	private void setTickConversion(EncodingType encodingType) {
@@ -173,8 +167,8 @@ public class CBEncoder implements CBSource, CBDevice {
 
 	public enum PIDSourceType {kDisplacement, kRate}
 
-	public CBEncoder setPIDSourceType(PIDSourceType pidSource) {
-		this.pidSourceType = pidSource;
+	public CBEncoder setPIDSourceType(PIDSourceType pidSourceType) {
+		this.pidSourceType = pidSourceType;
 		return this;
 	}
 
@@ -248,9 +242,7 @@ public class CBEncoder implements CBSource, CBDevice {
 	}
 	
 	public CBEncoder reset() {
-		//encoder.reset();
-		mc.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-		mc.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+		baseReset();
 		offsetEdges = 0;
 		offsetPulses = 0;
 		offsetDistance = 0;
@@ -272,7 +264,7 @@ public class CBEncoder implements CBSource, CBDevice {
 		lastEdgeValue = edgeValue;
 
 
-		edgeValue = reversedScale*mc.getCurrentPosition();
+		edgeValue = reversedScale*baseGetRaw();
 		pulseValue = edgeValue /edgesPerPulse;
 		distanceValue = pulseValue*distancePerPulse;
 		offEdgeValue = edgeValue+offsetEdges;
