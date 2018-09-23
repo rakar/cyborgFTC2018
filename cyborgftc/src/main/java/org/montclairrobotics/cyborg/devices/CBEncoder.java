@@ -45,10 +45,6 @@ public class CBEncoder extends CBEncoderBase {
     private String name;
     private String subsystem;
 
-	@Override
-	public void configure() {
-
-	}
 
 	/*
 	public class CBIndexEntry {
@@ -56,7 +52,7 @@ public class CBEncoder extends CBEncoderBase {
 		CBDeviceID triggerId;
 		boolean activeState;
 		double distance;
-		
+
 		public CBIndexEntry(CBDeviceID triggerId, boolean activeState, double distance) {
 			this.triggerId = triggerId;
 			this.activeState = activeState;
@@ -81,7 +77,7 @@ public class CBEncoder extends CBEncoderBase {
 		}
 	}
 	*/
-	
+
 	public CBEncoder setDistance(double distance){
 		reset();
 		offsetDistance = distance;
@@ -130,7 +126,7 @@ public class CBEncoder extends CBEncoderBase {
 		indexEntries.add(indexEntry);
 		return this;
 	}
-	
+
 	public CBEncoder removeIndexEntry(CBDeviceID triggerId) {
 		int trg = -1;
 		for(int i=0;i<indexEntries.size();i++) {
@@ -218,15 +214,15 @@ public class CBEncoder extends CBEncoderBase {
     public boolean getDirection() {
 		return (pulseValue-lastPulseValue)>0;
 	}
-	
+
 	public int getEncodingScale() {
 		return edgesPerPulse;
 	}
-	
+
 	public double getRate() {
 		return pulseRate;
 	}
-	
+
 	public int getEdges() {
 		return edgeValue +offsetEdges;
 	}
@@ -236,11 +232,11 @@ public class CBEncoder extends CBEncoderBase {
 		return encoder.getSamplesToAverage();
 	}
     */
-	
+
 	public boolean getStopped() {
 		return Math.abs(pulseRate)<stoppedMargin;
 	}
-	
+
 	public CBEncoder reset() {
 		baseReset();
 		offsetEdges = 0;
@@ -259,36 +255,47 @@ public class CBEncoder extends CBEncoderBase {
 		return this;
 	}
 
-	@Override
-	public void senseUpdate() {
-		lastEdgeValue = edgeValue;
+    @Override
+    public CBDeviceControl getDeviceControl() {
+        return deviceControl;
+    }
+
+    CBDeviceControl deviceControl = new CBDeviceControl() {
+        @Override
+        public void init() {
+
+        }
+
+        @Override
+        public void senseUpdate() {
+            lastEdgeValue = edgeValue;
 
 
-		edgeValue = reversedScale*baseGetRaw();
-		pulseValue = edgeValue /edgesPerPulse;
-		distanceValue = pulseValue*distancePerPulse;
-		offEdgeValue = edgeValue+offsetEdges;
-		offPulseValue = offEdgeValue/edgesPerPulse;
-		offDistanceValue = offPulseValue*distancePerPulse;
+            edgeValue = reversedScale * baseGetRaw();
+            pulseValue = edgeValue / edgesPerPulse;
+            distanceValue = pulseValue * distancePerPulse;
+            offEdgeValue = edgeValue + offsetEdges;
+            offPulseValue = offEdgeValue / edgesPerPulse;
+            offDistanceValue = offPulseValue * distancePerPulse;
 
-		//SmartDashboard.putNumber("sense encoder edges", edgeValue);
-		//SmartDashboard.putNumber("sense encoder offsetEdges", offsetEdges);
-		//SmartDashboard.putNumber("sense encoder offEdgeVal", offEdgeValue);
+            //SmartDashboard.putNumber("sense encoder edges", edgeValue);
+            //SmartDashboard.putNumber("sense encoder offsetEdges", offsetEdges);
+            //SmartDashboard.putNumber("sense encoder offEdgeVal", offEdgeValue);
 
-		long now = currentTimeMillis();
-		if(lastUpdate==0) {
-			ms=0;
-		} else {
-			ms = now-lastUpdate;
-		}
-		lastUpdate = now;
+            long now = currentTimeMillis();
+            if (lastUpdate == 0) {
+                ms = 0;
+            } else {
+                ms = now - lastUpdate;
+            }
+            lastUpdate = now;
 
-		if(ms==0) {
-			pulseRate = 0;
-		} else {
-			pulseRate = (pulseValue - lastPulseValue) * 1000 / ms;
-		}
-		speed = pulseRate*distancePerPulse;
+            if (ms == 0) {
+                pulseRate = 0;
+            } else {
+                pulseRate = (pulseValue - lastPulseValue) * 1000 / ms;
+            }
+            speed = pulseRate * distancePerPulse;
 
 		/*
 		for(CBIndexEntry i:indexEntries) {
@@ -297,10 +304,10 @@ public class CBEncoder extends CBEncoderBase {
 			}
 		}
 		*/
-	}
+        }
 
-	@Override
-	public void controlUpdate() {
-	}
-
+        @Override
+        public void controlUpdate() {
+        }
+    };
 }

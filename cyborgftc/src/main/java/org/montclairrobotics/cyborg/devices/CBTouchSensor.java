@@ -30,18 +30,25 @@ public class CBTouchSensor extends CBEdgeTrigger implements CBDevice {
     }
 
     @Override
-    public void configure() {
-
+    public CBDeviceControl getDeviceControl() {
+        return deviceControl;
     }
 
-    @Override
-    public void senseUpdate() {
-        value = touchSensor.getValue();
-        update(touchSensor.isPressed());
-    }
+    CBDeviceControl deviceControl = new CBDeviceControl() {
+        @Override
+        public void init() {
 
-    @Override
-    public void controlUpdate() {
+        }
 
-    }
+        @Override
+        public void senseUpdate() {
+            value = touchSensor.getValue();
+            update(touchSensor.isPressed());
+        }
+
+        @Override
+        public void controlUpdate() {
+
+        }
+    };
 }

@@ -62,18 +62,26 @@ public class CBCoreMotorSpeedController implements CBSpeedController {
         return this;
     }
 
-    @Override
-    public void senseUpdate() {
-
-    }
 
     @Override
-    public void controlUpdate() {
-
+    public CBDeviceControl getDeviceControl() {
+        return deviceControl;
     }
 
-    @Override
-    public void configure() {
+    CBDeviceControl deviceControl = new CBDeviceControl() {
+        @Override
+        public void init() {
 
-    }
+        }
+
+        @Override
+        public void senseUpdate() {
+
+        }
+
+        @Override
+        public void controlUpdate() {
+
+        }
+    };
 }

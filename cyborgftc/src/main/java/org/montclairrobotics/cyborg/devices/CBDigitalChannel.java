@@ -60,19 +60,26 @@ public class CBDigitalChannel extends CBEdgeTrigger implements CBDevice {
     }
 
     @Override
-    public void configure() {
-
+    public CBDeviceControl getDeviceControl() {
+        return deviceControl;
     }
 
-    @Override
-    public void senseUpdate() {
-        if(digitalChannel.getMode()== DigitalChannel.Mode.INPUT) {
-            update(digitalChannel.getState());
+    CBDeviceControl deviceControl = new CBDeviceControl() {
+        @Override
+        public void init() {
+
         }
-    }
 
-    @Override
-    public void controlUpdate() {
+        @Override
+        public void senseUpdate() {
+            if (digitalChannel.getMode() == DigitalChannel.Mode.INPUT) {
+                update(digitalChannel.getState());
+            }
+        }
 
-    }
+        @Override
+        public void controlUpdate() {
+
+        }
+    };
 }

@@ -68,18 +68,26 @@ public class CBAnalogInput implements CBDevice {
 
 
     @Override
-    public void configure() {
-
+    public CBDeviceControl getDeviceControl() {
+        return deviceControl;
     }
 
-    @Override
-    public void senseUpdate() {
-        voltageUpdated = false;
-        maxVoltageUpdated = false;
-    }
+    CBDeviceControl deviceControl = new CBDeviceControl() {
 
-    @Override
-    public void controlUpdate() {
+        @Override
+        public void init() {
 
-    }
+        }
+
+        @Override
+        public void senseUpdate() {
+            voltageUpdated = false;
+            maxVoltageUpdated = false;
+        }
+
+        @Override
+        public void controlUpdate() {
+
+        }
+    };
 }

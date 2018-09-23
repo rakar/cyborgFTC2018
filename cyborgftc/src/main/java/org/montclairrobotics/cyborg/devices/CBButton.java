@@ -27,17 +27,25 @@ public class CBButton extends CBEdgeTrigger implements CBDevice {
 		return buttonRef.isDefined();
 	}
 
-	@Override
-	public void configure() {
-	}
 
 	@Override
-	public void senseUpdate() {
-		update(joystick.getRawButton(buttonRef.index));
+	public CBDeviceControl getDeviceControl() {
+		return deviceControl;
 	}
 
-	@Override
-	public void controlUpdate() {
-	}
+	CBDeviceControl deviceControl = new CBDeviceControl() {
 
+		@Override
+		public void init() {
+		}
+
+		@Override
+		public void senseUpdate() {
+			update(joystick.getRawButton(buttonRef.index));
+		}
+
+		@Override
+		public void controlUpdate() {
+		}
+	};
 }

@@ -1,10 +1,10 @@
 package org.montclairrobotics.cyborg.devices;
 
-import java.util.ArrayList;
-
 import org.montclairrobotics.cyborg.Cyborg;
 import org.montclairrobotics.cyborg.utils.CBEnums;
 import org.montclairrobotics.cyborg.utils.CBModule;
+
+import java.util.ArrayList;
 
 
 /**
@@ -27,19 +27,19 @@ public class CBHardwareAdapter extends CBModule {
 
     public void configure() {
         for(CBDevice d: devices) {
-            d.configure();
+            d.getDeviceControl().init();
         }
     }
 
     public void senseUpdate() {
         for(CBDevice d: devices) {
-            d.senseUpdate();
+            d.getDeviceControl().senseUpdate();
         }
     }
 
     public void controlUpdate() {
         for(CBDevice d: devices) {
-            d.controlUpdate();
+            d.getDeviceControl().controlUpdate();
         }
     }
 
@@ -87,7 +87,7 @@ public class CBHardwareAdapter extends CBModule {
         CBDeviceID id = new CBDeviceID();
         id.ordinal = devices.size();
         devices.add(device);
-        device.configure();
+        device.getDeviceControl().deviceInit();
         return id;
     }
 

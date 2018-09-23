@@ -17,17 +17,25 @@ public class CBPov extends CBPOVRef implements CBDevice {
 	}
 
 	@Override
-	public void configure() {
+	public CBDeviceControl getDeviceControl() {
+		return deviceControl;
 	}
 
-	@Override
-	public void senseUpdate() {
-		state = joystick.getRawPOV(index);
-	}
+	CBDeviceControl deviceControl = new CBDeviceControl() {
 
-	@Override
-	public void controlUpdate() {
+		@Override
+		public void init() {
+		}
 
-	}
+		@Override
+		public void senseUpdate() {
+			state = joystick.getRawPOV(index);
+		}
+
+		@Override
+		public void controlUpdate() {
+
+		}
+	};
 
 }

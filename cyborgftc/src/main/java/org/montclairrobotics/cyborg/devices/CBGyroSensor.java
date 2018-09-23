@@ -53,19 +53,26 @@ public class CBGyroSensor implements CBDevice {
     }
 
     @Override
-    public void configure() {
-
+    public CBDeviceControl getDeviceControl() {
+        return deviceControl;
     }
 
-    @Override
-    public void senseUpdate() {
+    CBDeviceControl deviceControl = new CBDeviceControl() {
+        @Override
+        public void init() {
 
-    }
+        }
 
-    @Override
-    public void controlUpdate() {
+        @Override
+        public void senseUpdate() {
 
-    }
+        }
+
+        @Override
+        public void controlUpdate() {
+
+        }
+    };
 
     public String getStatus() {
         return gyroSensor.status();

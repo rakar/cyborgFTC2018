@@ -59,18 +59,28 @@ public class CBAnalogOutput implements CBDevice {
     public int getVersion() {
         return analogOutput.getVersion();
     }
-    @Override
-    public void configure() {
 
-    }
 
     @Override
-    public void senseUpdate() {
-
+    public CBDeviceControl getDeviceControl() {
+        return deviceControl;
     }
 
-    @Override
-    public void controlUpdate() {
+    CBDeviceControl deviceControl = new CBDeviceControl() {
 
-    }
+        @Override
+        public void init() {
+
+        }
+
+        @Override
+        public void senseUpdate() {
+
+        }
+
+        @Override
+        public void controlUpdate() {
+
+        }
+    };
 }

@@ -17,17 +17,29 @@ public class CBDigitalInput extends CBEdgeTrigger implements CBDevice {
     }
 
     @Override
-    public void configure() {
-
+    public CBDeviceControl getDeviceControl() {
+        return deviceControl;
     }
 
-    @Override
-    public void senseUpdate() {
+    private void update() {
         super.update(channel.getState());
     }
 
-    @Override
-    public void controlUpdate() {
+    CBDeviceControl deviceControl = new CBDeviceControl() {
 
-    }
+        @Override
+        public void init() {
+
+        }
+
+        @Override
+        public void senseUpdate() {
+            update();
+        }
+
+        @Override
+        public void controlUpdate() {
+
+        }
+    };
 }

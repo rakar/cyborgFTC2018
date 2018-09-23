@@ -1,7 +1,6 @@
 package org.montclairrobotics.cyborg.devices;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.DcMotorControllerEx;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.PIDCoefficients;
@@ -69,17 +68,24 @@ public class CBRevMotorSpeedController implements CBSpeedController {
     }
 
     @Override
-    public void senseUpdate() {
-
+    public CBDeviceControl getDeviceControl() {
+        return deviceControl;
     }
 
-    @Override
-    public void controlUpdate() {
+    CBDeviceControl deviceControl = new CBDeviceControl() {
+        @Override
+        public void init() {
 
-    }
+        }
 
-    @Override
-    public void configure() {
+        @Override
+        public void senseUpdate() {
 
-    }
+        }
+
+        @Override
+        public void controlUpdate() {
+
+        }
+    };
 }
