@@ -13,26 +13,21 @@ import org.montclairrobotics.cyborg.behaviors.CBQuickAutoBehavior;
 @Disabled
 public class VVAuto2 extends VVRobot {
     @Override
-    public void autonomousInit() {
-        opModeName="VVAuto2";
-        teleOp = false;
+    public void opModeInit() {
         addAutonomous(new CBQuickAutoBehavior(this));
     }
 
     // If you use CBQuickAutoBehavior as at least one of your
     // Autonomous Behaviors, you can add quickInit() and quickUpdate()
     // functionality here.
-
     @Override
     public void quickInit() {
 
-        telemetry.addLine("Quick Init");
-        telemetry.update();
+        logMessage("Quick Init");
     }
 
     @Override
     public void quickUpdate() {
-        telemetry.addLine("Quick Update");
-        telemetry.update();
+        logMessage("Quick Update");
     }
 }

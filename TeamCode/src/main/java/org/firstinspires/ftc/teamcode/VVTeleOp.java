@@ -12,8 +12,6 @@ import org.firstinspires.ftc.teamcode.vv.VVRobot;
 @Disabled
 public class VVTeleOp extends VVRobot {
 
-    public void autonomousInit() {
-        opModeName = "Cyborg 1T";
-        teleOp = true;
+    public void opModeInit() {
     }
 }

@@ -8,8 +8,7 @@ import org.montclairrobotics.cyborg.behaviors.CBQuickAutoBehavior;
 @Autonomous(name = "Auto2", group="cyborg")
 public class CTAuto2 extends CTRobot {
     @Override
-    public void cyborgInit() {
-        super.cyborgInit();
+    public void opModeInit() {
         addAutonomous(new CBQuickAutoBehavior(this));
     }
 

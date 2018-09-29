@@ -12,4 +12,9 @@ public class OpMode1 extends Cyborg {
     public void cyborgInit() {
 
     }
+
+    @Override
+    public void opModeInit() {
+
+    }
 }

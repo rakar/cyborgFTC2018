@@ -131,7 +131,7 @@ public abstract class Cyborg extends OpMode {
         }
 
         cyborgInit();
-        //if(!teleOp) autonomousInit();
+        opModeInit();
 
         hardwareAdapter.init();
 
@@ -153,14 +153,8 @@ public abstract class Cyborg extends OpMode {
         logMessage("Cyborg: init complete",true);
     }
 
-    //public abstract void autonomousInit();
-    //public abstract void cyborgTestInit();
-    //public abstract void cyborgTestPeriodic();
-
     public abstract void cyborgInit();
-    //public abstract void cyborgDisabledInit();
-    //public abstract void cyborgDisabledPeriodic();
-    //public abstract void cyborgTeleopInit();
+    public abstract void opModeInit();
 
     @Override
     public final void start() {

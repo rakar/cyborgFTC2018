@@ -8,8 +8,7 @@ import org.firstinspires.ftc.teamcode.ct.CTTraceAutonomous;
 @Autonomous(name = "Auto1", group="cyborg")
 public class CTAuto1 extends CTRobot {
     @Override
-    public void cyborgInit() {
-        super.cyborgInit();
+    public void opModeInit() {
         addAutonomous(new CTTraceAutonomous(this, "auto1"));
     }
 }

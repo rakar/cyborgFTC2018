@@ -81,21 +81,19 @@ public abstract class VVRobot extends Cyborg {
 		//
 		// Input Mapper Initialization
 		//
-		
-		// Tank Drive Stick Input Example...
-		telemetry.addLine("adding TeleOpMapper");
-		this.addTeleOpMapper(
-				new CBTankDriveMapper(this, requestData.drivetrain, forwardAxis, forward2Axis)
-				.setDeadZone(0.1)
-				);
+        // Tank Drive Stick Input Example...
+        telemetry.addLine("adding TeleOpMapper");
+        this.addTeleOpMapper(
+                new CBTankDriveMapper(this, requestData.drivetrain, forwardAxis, forward2Axis)
+                        .setDeadZone(0.1)
+        );
+        // Use teleOp mappers for operator mapping
+        this.addTeleOpMapper(
+                new VVTeleOpMapper(this)
+                        .setTriggerAxis(triggerAxis)
+        );
 
-		// Use teleOp mappers for operator mapping
-		this.addTeleOpMapper(
-				new VVTeleOpMapper(this)
-				.setTriggerAxis(triggerAxis)
-				);
-		
-		//
+        //
 		// Output Controller Initialization
 		//
 		telemetry.addLine("adding Output Controllers");
@@ -152,6 +150,4 @@ public abstract class VVRobot extends Cyborg {
 		telemetry.addLine("init done.");
 		telemetry.update();
 	}
-
-	public abstract void autonomousInit();
 }

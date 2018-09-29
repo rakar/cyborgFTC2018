@@ -3,7 +3,6 @@ package org.firstinspires.ftc.teamcode.ct;
 import org.montclairrobotics.cyborg.Cyborg;
 import org.montclairrobotics.cyborg.devices.CBAxis;
 import org.montclairrobotics.cyborg.devices.CBDeviceID;
-import org.montclairrobotics.cyborg.mappers.CBArcadeDriveMapper;
 import org.montclairrobotics.cyborg.utils.CBEnums;
 
 public abstract class CTRobot extends Cyborg {
@@ -22,7 +21,7 @@ public abstract class CTRobot extends Cyborg {
 
     public void cyborgInit() {
 
-        logMessage("cyborgInit: Configure Hardware Adapter");
+        logMessage("CTRobot: init begin");
         // move inside cyborg itself.
         //Cyborg.hardwareAdapter = new CBHardwareAdapter(this);
 
@@ -33,23 +32,11 @@ public abstract class CTRobot extends Cyborg {
         rotateAxis  = hardwareAdapter.add(new CBAxis(driveStickId, CBEnums.CBAxisId.Left_X).setDeadzone(0.1));
         trace = hardwareAdapter.add(new CTTraceDevice("normal"));
 
+        logMessage("adding SensorMappers");
         this.addSensorMapper(
                 new CTTraceSensorMapper(this, "sensor")
         );
-
-
-        logMessage("adding TeleOpMapper",false);
-        this.addTeleOpMapper(
-                new CTTraceTeleOpMapper(this,"teleop")
-        );
-        this.addTeleOpMapper(
-                new CBArcadeDriveMapper(this, requestData.drivetrain )
-                    .setAxes(forwardAxis,strafeAxis,rotateAxis)
-                    .setAxisScales(1.0, 1.0, 1.0)
-                    .setDebug(true)
-        );
-        logMessage("added TeleOpMapper",false);
-
+        logMessage("added SensorMappers");
 
         logMessage("adding Behaviors");
         this.addBehavior(
@@ -63,6 +50,6 @@ public abstract class CTRobot extends Cyborg {
         );
         logMessage("added Controllers");
 
-
+        logMessage("CTRobot: init complete");
     }
 }
