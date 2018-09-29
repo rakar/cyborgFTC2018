@@ -2,7 +2,7 @@ package org.montclairrobotics.cyborg.devices;
 
 import com.qualcomm.robotcore.hardware.Gamepad;
 
-import org.montclairrobotics.cyborg.utils.CBEnums;
+import org.montclairrobotics.cyborg.core.utils.CBEnums;
 
 /**
  * Created by rich on 9/23/2016.

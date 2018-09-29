@@ -1,14 +1,14 @@
 package org.firstinspires.ftc.teamcode.ct;
 
 import org.montclairrobotics.cyborg.Cyborg;
-import org.montclairrobotics.cyborg.behaviors.CBTraceBehavior;
-import org.montclairrobotics.cyborg.behaviors.CBTraceRule;
-import org.montclairrobotics.cyborg.controllers.CBTraceController;
+import org.montclairrobotics.cyborg.core.behaviors.CBTraceBehavior;
+import org.montclairrobotics.cyborg.core.behaviors.CBTraceRule;
+import org.montclairrobotics.cyborg.core.controllers.CBTraceController;
 import org.montclairrobotics.cyborg.devices.CBAxis;
 import org.montclairrobotics.cyborg.devices.CBDeviceID;
 import org.montclairrobotics.cyborg.devices.CBTraceDevice;
-import org.montclairrobotics.cyborg.mappers.CBTraceSensorMapper;
-import org.montclairrobotics.cyborg.utils.CBEnums;
+import org.montclairrobotics.cyborg.core.mappers.CBTraceSensorMapper;
+import org.montclairrobotics.cyborg.core.utils.CBEnums;
 
 public abstract class CTRobot extends Cyborg {
     final static CBEnums.CBJoystickId driveStickId = CBEnums.CBJoystickId.Left;

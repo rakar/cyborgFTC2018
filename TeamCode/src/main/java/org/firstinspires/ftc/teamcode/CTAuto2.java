@@ -3,8 +3,8 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
 import org.firstinspires.ftc.teamcode.ct.CTRobot;
-import org.montclairrobotics.cyborg.behaviors.CBQuickAutoBehavior;
-import org.montclairrobotics.cyborg.utils.CBStateMachine;
+import org.montclairrobotics.cyborg.core.behaviors.CBQuickAutoBehavior;
+import org.montclairrobotics.cyborg.core.utils.CBStateMachine;
 
 @Autonomous(name = "Auto2", group="cyborg")
 public class CTAuto2 extends CTRobot {

@@ -1,8 +1,8 @@
 package org.montclairrobotics.cyborg.devices;
 
 import org.montclairrobotics.cyborg.Cyborg;
-import org.montclairrobotics.cyborg.utils.CBEdgeTrigger;
-import org.montclairrobotics.cyborg.utils.CBEnums;
+import org.montclairrobotics.cyborg.core.utils.CBEdgeTrigger;
+import org.montclairrobotics.cyborg.core.utils.CBEnums;
 
 public class CBButton extends CBEdgeTrigger implements CBDevice {
 

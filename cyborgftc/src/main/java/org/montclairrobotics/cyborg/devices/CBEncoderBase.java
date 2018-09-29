@@ -3,7 +3,7 @@ package org.montclairrobotics.cyborg.devices;
 import com.qualcomm.robotcore.hardware.DcMotor;
 
 import org.montclairrobotics.cyborg.Cyborg;
-import org.montclairrobotics.cyborg.utils.CBSource;
+import org.montclairrobotics.cyborg.core.utils.CBSource;
 
 public abstract class CBEncoderBase implements CBSource,CBDevice {
 

@@ -1,6 +1,6 @@
 package org.montclairrobotics.cyborg.devices;
 
-import org.montclairrobotics.cyborg.utils.CBEnums;
+import org.montclairrobotics.cyborg.core.utils.CBEnums;
 
 public class CBAxisRef {
 	public CBEnums.CBJoystickId stickID;

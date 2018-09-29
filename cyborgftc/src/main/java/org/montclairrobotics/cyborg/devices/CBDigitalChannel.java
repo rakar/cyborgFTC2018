@@ -4,7 +4,7 @@ import com.qualcomm.robotcore.hardware.DigitalChannel;
 import com.qualcomm.robotcore.hardware.HardwareDevice;
 
 import org.montclairrobotics.cyborg.Cyborg;
-import org.montclairrobotics.cyborg.utils.CBEdgeTrigger;
+import org.montclairrobotics.cyborg.core.utils.CBEdgeTrigger;
 
 /**
  * Created by rich on 9/25/2016.

@@ -1,19 +1,19 @@
 package org.firstinspires.ftc.teamcode.vv;
 
 import org.montclairrobotics.cyborg.Cyborg;
-import org.montclairrobotics.cyborg.assemblies.CBDriveModule;
-import org.montclairrobotics.cyborg.assemblies.CBVictorArrayController;
-import org.montclairrobotics.cyborg.behaviors.CBTankDriveBehavior;
-import org.montclairrobotics.cyborg.controllers.CBDifferentialDriveController;
-import org.montclairrobotics.cyborg.data.CBLogicData;
+import org.montclairrobotics.cyborg.core.assemblies.CBDriveModule;
+import org.montclairrobotics.cyborg.core.assemblies.CBVictorArrayController;
+import org.montclairrobotics.cyborg.core.behaviors.CBTankDriveBehavior;
+import org.montclairrobotics.cyborg.core.controllers.CBDifferentialDriveController;
+import org.montclairrobotics.cyborg.core.data.CBLogicData;
 import org.montclairrobotics.cyborg.devices.CBAxis;
 import org.montclairrobotics.cyborg.devices.CBCoreMotorSpeedController;
 import org.montclairrobotics.cyborg.devices.CBDeviceID;
 import org.montclairrobotics.cyborg.devices.CBServo;
-import org.montclairrobotics.cyborg.mappers.CBTankDriveMapper;
-import org.montclairrobotics.cyborg.utils.CB2DVector;
-import org.montclairrobotics.cyborg.utils.CBEnums;
-import org.montclairrobotics.cyborg.utils.CBEnums.CBDriveMode;
+import org.montclairrobotics.cyborg.core.mappers.CBTankDriveMapper;
+import org.montclairrobotics.cyborg.core.utils.CB2DVector;
+import org.montclairrobotics.cyborg.core.utils.CBEnums;
+import org.montclairrobotics.cyborg.core.utils.CBEnums.CBDriveMode;
 
 /**
  * 

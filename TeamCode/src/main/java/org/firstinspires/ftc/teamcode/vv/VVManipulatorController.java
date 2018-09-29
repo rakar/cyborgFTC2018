@@ -1,7 +1,7 @@
 package org.firstinspires.ftc.teamcode.vv;
 
 import org.montclairrobotics.cyborg.Cyborg;
-import org.montclairrobotics.cyborg.controllers.CBRobotController;
+import org.montclairrobotics.cyborg.core.controllers.CBRobotController;
 import org.montclairrobotics.cyborg.devices.CBDeviceID;
 import org.montclairrobotics.cyborg.devices.CBServo;
 

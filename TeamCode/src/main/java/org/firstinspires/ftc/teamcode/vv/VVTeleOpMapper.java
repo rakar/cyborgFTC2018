@@ -3,7 +3,7 @@ package org.firstinspires.ftc.teamcode.vv;
 import org.montclairrobotics.cyborg.Cyborg;
 import org.montclairrobotics.cyborg.devices.CBAxis;
 import org.montclairrobotics.cyborg.devices.CBDeviceID;
-import org.montclairrobotics.cyborg.mappers.CBTeleOpMapper;
+import org.montclairrobotics.cyborg.core.mappers.CBTeleOpMapper;
 
 /**
  * Created by rich on 9/24/2016.

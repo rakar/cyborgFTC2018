@@ -4,7 +4,7 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 
 import org.firstinspires.ftc.teamcode.vv.VVRobot;
-import org.montclairrobotics.cyborg.behaviors.CBQuickAutoBehavior;
+import org.montclairrobotics.cyborg.core.behaviors.CBQuickAutoBehavior;
 
 /**
  * Created by rich on 9/24/2016.

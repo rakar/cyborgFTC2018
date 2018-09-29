@@ -1,8 +1,8 @@
 package org.montclairrobotics.cyborg.devices;
 
 import org.montclairrobotics.cyborg.Cyborg;
-import org.montclairrobotics.cyborg.utils.CBEnums;
-import org.montclairrobotics.cyborg.utils.CBModule;
+import org.montclairrobotics.cyborg.core.utils.CBEnums;
+import org.montclairrobotics.cyborg.core.utils.CBModule;
 
 import java.util.ArrayList;
 

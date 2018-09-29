@@ -2,7 +2,7 @@ package org.montclairrobotics.cyborg.devices;
 
 import com.qualcomm.robotcore.hardware.DigitalChannel;
 
-import org.montclairrobotics.cyborg.utils.CBEdgeTrigger;
+import org.montclairrobotics.cyborg.core.utils.CBEdgeTrigger;
 
 public class CBDigitalInput extends CBEdgeTrigger implements CBDevice {
     CBDigitalChannel channel;

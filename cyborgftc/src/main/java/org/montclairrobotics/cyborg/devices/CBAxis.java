@@ -1,6 +1,6 @@
 package org.montclairrobotics.cyborg.devices;
 
-import org.montclairrobotics.cyborg.utils.CBEnums;
+import org.montclairrobotics.cyborg.core.utils.CBEnums;
 
 import static org.montclairrobotics.cyborg.Cyborg.hardwareAdapter;
 

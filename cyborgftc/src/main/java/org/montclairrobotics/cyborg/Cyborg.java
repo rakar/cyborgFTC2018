@@ -4,15 +4,15 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
-import org.montclairrobotics.cyborg.behaviors.CBAutonomous;
-import org.montclairrobotics.cyborg.behaviors.CBBehavior;
-import org.montclairrobotics.cyborg.behaviors.CBRule;
-import org.montclairrobotics.cyborg.controllers.CBRobotController;
+import org.montclairrobotics.cyborg.core.behaviors.CBAutonomous;
+import org.montclairrobotics.cyborg.core.behaviors.CBBehavior;
+import org.montclairrobotics.cyborg.core.behaviors.CBRule;
+import org.montclairrobotics.cyborg.core.controllers.CBRobotController;
 import org.montclairrobotics.cyborg.devices.CBHardwareAdapter;
-import org.montclairrobotics.cyborg.mappers.CBSensorMapper;
-import org.montclairrobotics.cyborg.mappers.CBTeleOpMapper;
-import org.montclairrobotics.cyborg.utils.CBGameMode;
-import org.montclairrobotics.cyborg.utils.CBRunStatistics;
+import org.montclairrobotics.cyborg.core.mappers.CBSensorMapper;
+import org.montclairrobotics.cyborg.core.mappers.CBTeleOpMapper;
+import org.montclairrobotics.cyborg.core.utils.CBGameMode;
+import org.montclairrobotics.cyborg.core.utils.CBRunStatistics;
 
 import java.lang.annotation.Annotation;
 import java.util.ArrayList;
