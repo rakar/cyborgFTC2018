@@ -1,11 +1,9 @@
-package org.firstinspires.ftc.teamcode;
+package org.firstinspires.ftc.teamcode.vv;
 
 import org.montclairrobotics.cyborg.Cyborg;
-import org.montclairrobotics.cyborg.behaviors.CBTankDriveBehavior;
-import org.montclairrobotics.cyborg.utils.CB2DVector;
-import org.montclairrobotics.cyborg.utils.CBEnums;
 import org.montclairrobotics.cyborg.assemblies.CBDriveModule;
 import org.montclairrobotics.cyborg.assemblies.CBVictorArrayController;
+import org.montclairrobotics.cyborg.behaviors.CBTankDriveBehavior;
 import org.montclairrobotics.cyborg.controllers.CBDifferentialDriveController;
 import org.montclairrobotics.cyborg.data.CBLogicData;
 import org.montclairrobotics.cyborg.devices.CBAxis;
@@ -14,6 +12,8 @@ import org.montclairrobotics.cyborg.devices.CBDeviceID;
 import org.montclairrobotics.cyborg.devices.CBHardwareAdapter;
 import org.montclairrobotics.cyborg.devices.CBServo;
 import org.montclairrobotics.cyborg.mappers.CBTankDriveMapper;
+import org.montclairrobotics.cyborg.utils.CB2DVector;
+import org.montclairrobotics.cyborg.utils.CBEnums;
 import org.montclairrobotics.cyborg.utils.CBEnums.CBDriveMode;
 
 /**
@@ -34,9 +34,9 @@ public abstract class VVRobot extends Cyborg {
 	//
 	// Data Initialization
 	//
-	VVRequestData requestData = new VVRequestData();
-	VVControlData controlData = new VVControlData();
-	CBLogicData logicData = new CBLogicData();
+	public VVRequestData requestData = new VVRequestData();
+	public VVControlData controlData = new VVControlData();
+	public CBLogicData logicData = new CBLogicData();
 
 	//
 	// List Custom Hardware Devices...

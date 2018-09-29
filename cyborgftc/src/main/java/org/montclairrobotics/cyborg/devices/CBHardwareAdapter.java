@@ -18,6 +18,10 @@ public class CBHardwareAdapter extends CBModule {
 
     public CBHardwareAdapter(Cyborg robot) {
         super(robot);
+
+        joysticks.add(new CBJoystick(robot.gamepad1));
+        joysticks.add(new CBJoystick(robot.gamepad2));
+        joystickCount=2;
     }
 
     @Override

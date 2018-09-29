@@ -1,13 +1,17 @@
-package org.firstinspires.ftc.teamcode;
+package org.firstinspires.ftc.teamcode.vv;
 
-import org.montclairrobotics.cyborg.behaviors.CBAutoBehavior;
 import org.montclairrobotics.cyborg.Cyborg;
+import org.montclairrobotics.cyborg.behaviors.CBAutonomous;
 
 /**
  * Created by rich on 9/24/2016.
  */
 
-public class VVAutoBehavior1 extends CBAutoBehavior {
+public class VVAutoBehavior1 extends CBAutonomous {
+    public VVAutoBehavior1(Cyborg robot) {
+        super(robot);
+    }
+
     @Override
     public void init() {
         Cyborg.hardwareAdapter.robot.telemetry.addLine("auto init");

@@ -49,6 +49,11 @@ public class CBTankDriveMapper extends CBTeleOpMapper {
 	}
 
 	@Override
+	public void init() {
+
+	}
+
+	@Override
 	public void update() {
 		double leftStick  = 0; // y-axis of first stick
 		double rightStick = 0; // y-axis of second stick;

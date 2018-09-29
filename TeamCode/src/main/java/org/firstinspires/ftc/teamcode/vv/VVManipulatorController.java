@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode;
+package org.firstinspires.ftc.teamcode.vv;
 
 import org.montclairrobotics.cyborg.Cyborg;
 import org.montclairrobotics.cyborg.controllers.CBRobotController;
@@ -30,6 +30,11 @@ public class VVManipulatorController extends CBRobotController {
 
     @Override
     public void configHardware() {
+
+    }
+
+    @Override
+    public void init() {
 
     }
 }

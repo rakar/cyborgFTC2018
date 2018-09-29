@@ -9,9 +9,7 @@ public abstract class CBTeleOpMapper extends CBModule {
 		super(robot);
 	}
 
-	public void init() {
-	}
+	public abstract void init();
 
-	public void update() {
-	}
+	public abstract void update();
 }

@@ -3,7 +3,6 @@ package org.montclairrobotics.cyborg.controllers;
 import org.montclairrobotics.cyborg.Cyborg;
 import org.montclairrobotics.cyborg.assemblies.CBDriveModule;
 import org.montclairrobotics.cyborg.assemblies.CBSwerveDriveModule;
-import org.montclairrobotics.cyborg.data.CBDriveControlData;
 import org.montclairrobotics.cyborg.data.CBStdDriveControlData;
 import org.montclairrobotics.cyborg.utils.CB2DVector;
 
@@ -28,6 +27,11 @@ public class CBSwerveDriveController extends CBDriveController {
         return this;
     }
     */
+
+    @Override
+    public void init() {
+
+    }
 
     @Override
     public void update() {

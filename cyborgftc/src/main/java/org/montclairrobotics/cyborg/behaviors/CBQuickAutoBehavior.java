@@ -6,7 +6,11 @@ import org.montclairrobotics.cyborg.Cyborg;
  * Created by rich on 9/24/2016.
  */
 
-public class CBQuickAutoBehavior extends CBAutoBehavior {
+public class CBQuickAutoBehavior extends CBAutonomous {
+    public CBQuickAutoBehavior(Cyborg robot) {
+        super(robot);
+    }
+
     @Override
     public void init() {
         Cyborg.hardwareAdapter.robot.quickInit();

@@ -25,10 +25,14 @@ public class CBStdDriveBehavior extends CBBehavior {
 	}
 
 	@Override
-	public void update() {
-		super.update();
+	public void init() {
 
+	}
+
+	@Override
+	public void update() {
 		dcd.active = drd.active;
+
 		if(dcd.active) {
 			dcd.direction.copy(drd.direction);
 			dcd.rotation = drd.rotation;

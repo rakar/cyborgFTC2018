@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode;
+package org.firstinspires.ftc.teamcode.vv;
 
 import org.montclairrobotics.cyborg.Cyborg;
 import org.montclairrobotics.cyborg.devices.CBAxis;
@@ -21,6 +21,11 @@ public class VVTeleOpMapper extends CBTeleOpMapper {
     public VVTeleOpMapper setTriggerAxis(CBDeviceID trigAxis) {
         triggerAxis = Cyborg.hardwareAdapter.getAxis(trigAxis);
         return this;
+    }
+
+    @Override
+    public void init() {
+
     }
 
     @Override

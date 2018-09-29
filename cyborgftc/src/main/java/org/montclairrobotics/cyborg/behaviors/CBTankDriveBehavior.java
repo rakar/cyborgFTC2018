@@ -2,8 +2,6 @@ package org.montclairrobotics.cyborg.behaviors;
 
 import org.montclairrobotics.cyborg.Cyborg;
 import org.montclairrobotics.cyborg.data.CBDifferentialDriveControlData;
-import org.montclairrobotics.cyborg.data.CBStdDriveControlData;
-import org.montclairrobotics.cyborg.data.CBStdDriveRequestData;
 import org.montclairrobotics.cyborg.data.CBTankDriveRequestData;
 
 @Deprecated
@@ -17,35 +15,15 @@ public class CBTankDriveBehavior extends CBBehavior {
 		super(robot);
         drd = requestData;
         dcd = controlData;
-		//setRequestData((CBTankDriveRequestData)Cyborg.requestData.driveData);
-		//setControlData((CBDifferentialDriveControlData)Cyborg.controlData.driveData);
 	}
 
-	/*
-	public CBTankDriveBehavior setData(CBTankDriveRequestData requestData, CBDifferentialDriveControlData controlData) {
-		drd = requestData;
-		dcd = controlData;
-		return this;
-	}
+	@Override
+	public void init() {
 
-	public CBTankDriveBehavior setRequestData(CBTankDriveRequestData data) {
-		drd = data;
-		return this;
 	}
-
-	public CBTankDriveBehavior setControlData(CBDifferentialDriveControlData data) {
-		dcd = data;
-		return this;
-	}
-	*/
 
 	@Override
 	public void update() {
-		super.update();
-		
-		//CBTankDriveRequestData drd = (CBTankDriveRequestData)Cyborg.requestData.driveData;
-		//CBDifferentialDriveControlData dcd = (CBDifferentialDriveControlData)Cyborg.controlData.driveData;
-		
 		// Copy simple Tank drive command info
 		dcd.leftPower = drd.leftPower;
 		dcd.rightPower = drd.rightPower;

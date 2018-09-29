@@ -1,14 +1,14 @@
 package org.montclairrobotics.cyborg.controllers;
 
 //import java.time.Instant;
-import java.util.ArrayList;
-
 import org.montclairrobotics.cyborg.Cyborg;
 import org.montclairrobotics.cyborg.assemblies.CBDriveModule;
 import org.montclairrobotics.cyborg.data.CBDifferentialDriveControlData;
 import org.montclairrobotics.cyborg.data.CBDriveControlData;
 import org.montclairrobotics.cyborg.data.CBStdDriveControlData;
 import org.montclairrobotics.cyborg.utils.CB2DVector;
+
+import java.util.ArrayList;
 
 //import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -25,6 +25,11 @@ public class CBDifferentialDriveController extends CBDriveController implements 
 		super(robot);
 		driveModules = null;
 		dcd = controlData;
+	}
+
+	@Override
+	public void init() {
+
 	}
 
 	@Override

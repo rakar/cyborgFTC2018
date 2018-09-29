@@ -1,16 +1,15 @@
 package org.firstinspires.ftc.teamcode;
 
-import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
-import org.montclairrobotics.cyborg.Cyborg;
+import org.firstinspires.ftc.teamcode.ct.CTRobot;
 
-@TeleOp
-@Disabled
-public class OpMode1 extends Cyborg {
-    @Override
+@TeleOp(name="Cyborg Test", group="cyborg")
+public class CTTeleOp extends CTRobot {
+
     public void opModeInit() {
-
+        opModeName = "Cyborg Test";
+        teleOp = true;
     }
 
     @Override
@@ -20,11 +19,6 @@ public class OpMode1 extends Cyborg {
 
     @Override
     public void cyborgTestPeriodic() {
-
-    }
-
-    @Override
-    public void cyborgInit() {
 
     }
 

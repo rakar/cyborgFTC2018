@@ -1,19 +1,22 @@
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 
+import org.firstinspires.ftc.teamcode.vv.VVRobot;
 import org.montclairrobotics.cyborg.behaviors.CBQuickAutoBehavior;
 
 /**
  * Created by rich on 9/24/2016.
  */
 @Autonomous(name="VVAuto2", group="cyborg")
+@Disabled
 public class VVAuto2 extends VVRobot {
     @Override
     public void opModeInit() {
         opModeName="VVAuto2";
         teleOp = false;
-        addAutonomous(new CBQuickAutoBehavior());
+        addAutonomous(new CBQuickAutoBehavior(this));
     }
 
     // If you use CBQuickAutoBehavior as at least one of your

@@ -74,6 +74,11 @@ public class CBLiftController extends CBRobotController {
     CBEncoder encoder;
     CBSpeedControllerArrayController speedControllerArray;
 
+    @Override
+    public void init() {
+
+    }
+
     enum CBLiftControlStates {Start, Idle, AtTop, AtBottom, DownSlow, UpSlow, DownNorm, UpNorm};
 
     private class CBLiftStateMachine extends CBStateMachine<CBLiftControlStates> {

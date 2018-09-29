@@ -1,8 +1,8 @@
 package org.montclairrobotics.cyborg.mappers;
 
 //import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
 import org.montclairrobotics.cyborg.Cyborg;
-import org.montclairrobotics.cyborg.data.CBDriveRequestData;
 import org.montclairrobotics.cyborg.data.CBStdDriveRequestData;
 import org.montclairrobotics.cyborg.devices.CBAxis;
 import org.montclairrobotics.cyborg.devices.CBButton;
@@ -14,10 +14,12 @@ public class CBArcadeDriveMapper extends CBTeleOpMapper {
 	private CBButton gyroLock; 
 	private double  xScale, yScale, rScale;
 	private CBStdDriveRequestData drd;
+	private boolean debug;
 
 	public CBArcadeDriveMapper(Cyborg robot, CBStdDriveRequestData requestData) {
 		super(robot);
 		drd = requestData;
+		debug=false;
 	}
 
 	public CBArcadeDriveMapper setAxes(CBDeviceID fwdDeviceID, CBDeviceID strDeviceID, CBDeviceID rotDeviceID) {
@@ -39,6 +41,11 @@ public class CBArcadeDriveMapper extends CBTeleOpMapper {
 		return this;
 	}
 
+	public CBArcadeDriveMapper setDebug(boolean debug) {
+		this.debug = debug;
+		return this;
+	}
+
 	public CBArcadeDriveMapper setGyroLockButton(CBDeviceID buttonDeviceID) {
 		this.gyroLock = Cyborg.hardwareAdapter.getDefaultedButton(buttonDeviceID);
 		return this;
@@ -52,12 +59,21 @@ public class CBArcadeDriveMapper extends CBTeleOpMapper {
 	}
 
 	@Override
+	public void init() {
+
+	}
+
+	@Override
 	public void update() {
         CBStdDriveRequestData drd = (CBStdDriveRequestData) this.drd;
         drd.active = true;
         drd.direction.setXY(xScale * strAxis.get(), yScale * fwdAxis.get());
         drd.rotation = rScale * rotAxis.get();
         drd.gyroLockActive = gyroLock.getState();
-        //SmartDashboard.putNumber("Mapper speed:", drd.direction.getY());
+
+        if(debug) {
+        	robot.logMessage("Raw Axes (f,s,r): "+Double.toString(fwdAxis.get())+":"+Double.toString(strAxis.get())+":"+Double.toString(rotAxis.get()));
+        	robot.logMessage("drd data (dy,dx,r): "+Double.toString(drd.direction.getY())+":"+Double.toString(drd.direction.getX())+":"+Double.toString(drd.rotation));
+		}
     }
 }

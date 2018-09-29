@@ -1,11 +1,11 @@
 package org.montclairrobotics.cyborg.controllers;
 
-import java.util.ArrayList;
-
 import org.montclairrobotics.cyborg.Cyborg;
 import org.montclairrobotics.cyborg.assemblies.CBDriveModule;
 import org.montclairrobotics.cyborg.data.CBStdDriveControlData;
 import org.montclairrobotics.cyborg.utils.CB2DVector;
+
+import java.util.ArrayList;
 
 public class CBMecanumDriveController extends CBDriveController {
 	//protected double tErr;
@@ -40,6 +40,11 @@ public class CBMecanumDriveController extends CBDriveController {
 		super(robot);
 		dcd = controlData;
 		System.err.println("Warning: CBMecanumDriveController implementation is highly experimental.");
+	}
+
+	@Override
+	public void init() {
+
 	}
 
 	@Override
