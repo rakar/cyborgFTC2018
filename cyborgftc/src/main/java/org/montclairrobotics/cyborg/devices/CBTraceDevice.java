@@ -1,13 +1,11 @@
-package org.firstinspires.ftc.teamcode.ct;
+package org.montclairrobotics.cyborg.devices;
 
 import org.montclairrobotics.cyborg.Cyborg;
-import org.montclairrobotics.cyborg.devices.CBDevice;
-import org.montclairrobotics.cyborg.devices.CBDeviceControl;
 
-public class CTTraceDevice implements CBDevice {
+public class CBTraceDevice implements CBDevice {
     private String id;
 
-    public CTTraceDevice(String id) {
+    public CBTraceDevice(String id) {
         this.id=id;
     }
 
@@ -20,17 +18,17 @@ public class CTTraceDevice implements CBDevice {
     CBDeviceControl deviceControl = new CBDeviceControl() {
         @Override
         public void init() {
-            Cyborg.hardwareAdapter.robot.logMessage("CTTraceDevice: init - "+id);
+            Cyborg.hardwareAdapter.robot.logMessage("CBTraceDevice: init - "+id);
         }
 
         @Override
         public void senseUpdate() {
-            Cyborg.hardwareAdapter.robot.logMessage("CTTraceDevice: senseUpdate - "+id);
+            Cyborg.hardwareAdapter.robot.logMessage("CBTraceDevice: senseUpdate - "+id);
         }
 
         @Override
         public void controlUpdate() {
-            Cyborg.hardwareAdapter.robot.logMessage("CTTraceDevice: controlUpdate - "+id);
+            Cyborg.hardwareAdapter.robot.logMessage("CBTraceDevice: controlUpdate - "+id);
         }
     };
 }

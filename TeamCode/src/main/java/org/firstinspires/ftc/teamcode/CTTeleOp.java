@@ -3,7 +3,7 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.ct.CTRobot;
-import org.firstinspires.ftc.teamcode.ct.CTTraceTeleOpMapper;
+import org.montclairrobotics.cyborg.mappers.CBTraceTeleOpMapper;
 import org.montclairrobotics.cyborg.mappers.CBArcadeDriveMapper;
 
 
@@ -14,7 +14,7 @@ public class CTTeleOp extends CTRobot {
     public void opModeInit() {
        logMessage("adding TeleOpMapper",false);
         this.addTeleOpMapper(
-                new CTTraceTeleOpMapper(this,"teleop")
+                new CBTraceTeleOpMapper(this,"teleop")
         );
         this.addTeleOpMapper(
                 new CBArcadeDriveMapper(this, requestData.drivetrain )
