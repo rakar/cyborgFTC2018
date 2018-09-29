@@ -9,7 +9,7 @@ public abstract class CBBehavior extends CBModule {
 		super(robot);
 	}
 
-	public abstract void init();
+	public void init() {}
 
-	public abstract void update();
+	public void update() {}
 }

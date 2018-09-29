@@ -12,6 +12,7 @@ public abstract class CBAutonomous extends CBModule {
         super(robot);
     }
 
-    public abstract void update();
+    public void init() {}
 
+    public void update() {}
 }

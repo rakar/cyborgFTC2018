@@ -13,7 +13,7 @@ import org.firstinspires.ftc.teamcode.vv.VVRobot;
 @Disabled
 public class VVAuto1 extends VVRobot {
 
-    public void opModeInit() {
+    public void autonomousInit() {
         opModeName = "Auto1";
         teleOp = false;
         addAutonomous(new VVAutoBehavior1(this));

@@ -5,31 +5,11 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.montclairrobotics.cyborg.Cyborg;
 
-@TeleOp
+@TeleOp(name = "OpMode1", group="cyborg")
 @Disabled
 public class OpMode1 extends Cyborg {
     @Override
-    public void opModeInit() {
-
-    }
-
-    @Override
-    public void cyborgTestInit() {
-
-    }
-
-    @Override
-    public void cyborgTestPeriodic() {
-
-    }
-
-    @Override
     public void cyborgInit() {
-
-    }
-
-    @Override
-    public void cyborgTeleopInit() {
 
     }
 }

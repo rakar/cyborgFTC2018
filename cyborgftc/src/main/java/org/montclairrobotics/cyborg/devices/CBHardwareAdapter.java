@@ -12,7 +12,7 @@ import java.util.ArrayList;
  */
 public class CBHardwareAdapter extends CBModule {
 
-    private int joystickCount = 0;
+    private int joystickCount; // = 0;
     private ArrayList<CBJoystick> joysticks = new ArrayList<>();
     private ArrayList<CBDevice> devices = new ArrayList<>();
 
@@ -50,6 +50,7 @@ public class CBHardwareAdapter extends CBModule {
     /*
      * Getters/Setters
      */
+    @Deprecated
     public CBHardwareAdapter setJoystickCount(int count) {
         for(int i=joystickCount;i<count;i++) {
             switch (i) {

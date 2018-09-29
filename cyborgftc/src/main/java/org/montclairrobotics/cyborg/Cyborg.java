@@ -1,6 +1,8 @@
 package org.montclairrobotics.cyborg;
 
+import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.montclairrobotics.cyborg.behaviors.CBAutonomous;
 import org.montclairrobotics.cyborg.behaviors.CBBehavior;
@@ -12,6 +14,7 @@ import org.montclairrobotics.cyborg.mappers.CBTeleOpMapper;
 import org.montclairrobotics.cyborg.utils.CBGameMode;
 import org.montclairrobotics.cyborg.utils.CBRunStatistics;
 
+import java.lang.annotation.Annotation;
 import java.util.ArrayList;
 
 /**
@@ -23,25 +26,25 @@ public abstract class Cyborg extends OpMode {
 
     // Mapper/Controller Queues
     // Mapper Queues hold lists of mappers that convert raw input state information into meaningful status info
-    private ArrayList<CBTeleOpMapper> teleOpMappers = new ArrayList<CBTeleOpMapper>();
-    private ArrayList<CBSensorMapper> sensorMappers = new ArrayList<CBSensorMapper>();
+    private ArrayList<CBTeleOpMapper> teleOpMappers; // = new ArrayList<CBTeleOpMapper>();
+    private ArrayList<CBSensorMapper> sensorMappers; // = new ArrayList<CBSensorMapper>();
     // Controller Queues hold lists of controllers that convert high-level requests into low-level raw control output data
-    private ArrayList<CBRobotController> robotControllers = new ArrayList<CBRobotController>();
+    private ArrayList<CBRobotController> robotControllers; // = new ArrayList<CBRobotController>();
 
     // Logic Layer
-    private ArrayList<CBRule> rules = new ArrayList<>();
-    private ArrayList<CBBehavior> behaviors = new ArrayList<>();
-    private ArrayList<CBAutonomous> autonomice = new ArrayList<>();
+    private ArrayList<CBRule> rules; // = new ArrayList<>();
+    private ArrayList<CBBehavior> behaviors; // = new ArrayList<>();
+    private ArrayList<CBAutonomous> autonomice; // = new ArrayList<>();
 
-    public static int gameMode=0;
-    public static String opModeName="";
-    public static boolean teleOp = false;
+    public static int gameMode; //=0;
+    public static String opModeName; //="";
+    public static boolean teleOp; // = false;
 
-    private boolean debug = false;
+    private boolean debug; // = false;
 
     //public NetworkTable table;
 
-    public CBRunStatistics runStatistics = new CBRunStatistics();
+    public CBRunStatistics runStatistics; // = new CBRunStatistics();
 
     // General Configuration
     /**
@@ -99,9 +102,36 @@ public abstract class Cyborg extends OpMode {
     public final void init() {
         logMessage("Cyborg: init");
         gameMode = CBGameMode.robotInit;
+        hardwareAdapter = new CBHardwareAdapter(this);
 
-        opModeInit();
+        // make for sure that we reset everything
+        teleOpMappers = new ArrayList<CBTeleOpMapper>();
+        sensorMappers = new ArrayList<CBSensorMapper>();
+        robotControllers = new ArrayList<CBRobotController>();
+
+        rules = new ArrayList<>();
+        behaviors = new ArrayList<>();
+        autonomice = new ArrayList<>();
+
+        opModeName="";
+        teleOp = false;
+        debug = false;
+        runStatistics = new CBRunStatistics();
+
+        // determine type and name of opMode
+        for(Annotation a: this.getClass().getAnnotations()){
+            if(a.annotationType()==TeleOp.class) {
+                opModeName = ((TeleOp)a).name();
+                teleOp = true;
+            }
+            if(a.annotationType()==Autonomous.class) {
+                opModeName = ((Autonomous)a).name();
+                teleOp = false;
+            }
+        }
+
         cyborgInit();
+        //if(!teleOp) autonomousInit();
 
         hardwareAdapter.init();
 
@@ -123,14 +153,14 @@ public abstract class Cyborg extends OpMode {
         logMessage("Cyborg: init complete",true);
     }
 
-    public abstract void opModeInit();
-    public abstract void cyborgTestInit();
-    public abstract void cyborgTestPeriodic();
+    //public abstract void autonomousInit();
+    //public abstract void cyborgTestInit();
+    //public abstract void cyborgTestPeriodic();
 
     public abstract void cyborgInit();
     //public abstract void cyborgDisabledInit();
     //public abstract void cyborgDisabledPeriodic();
-    public abstract void cyborgTeleopInit();
+    //public abstract void cyborgTeleopInit();
 
     @Override
     public final void start() {

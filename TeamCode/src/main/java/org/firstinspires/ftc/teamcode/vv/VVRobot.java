@@ -9,7 +9,6 @@ import org.montclairrobotics.cyborg.data.CBLogicData;
 import org.montclairrobotics.cyborg.devices.CBAxis;
 import org.montclairrobotics.cyborg.devices.CBCoreMotorSpeedController;
 import org.montclairrobotics.cyborg.devices.CBDeviceID;
-import org.montclairrobotics.cyborg.devices.CBHardwareAdapter;
 import org.montclairrobotics.cyborg.devices.CBServo;
 import org.montclairrobotics.cyborg.mappers.CBTankDriveMapper;
 import org.montclairrobotics.cyborg.utils.CB2DVector;
@@ -60,24 +59,24 @@ public abstract class VVRobot extends Cyborg {
 
 		telemetry.addLine("Configure Hardware Adapter");
 		// Configure Hardware Adapter
-		Cyborg.hardwareAdapter = 
-				new CBHardwareAdapter(this)
-				.setJoystickCount(2);
-		CBHardwareAdapter ha = Cyborg.hardwareAdapter;
+		//Cyborg.hardwareAdapter =
+		//		new CBHardwareAdapter(this)
+		//		.setJoystickCount(2);
+		//CBHardwareAdapter ha = Cyborg.hardwareAdapter;
 
 		// VVRobot Hardware
 		telemetry.addLine("adding Motor Controllers");
-		driveMotorLeft1		= ha.add(new CBCoreMotorSpeedController("left_driveF"));
-		driveMotorRight1	= ha.add(new CBCoreMotorSpeedController("right_driveF"));
-		driveMotorLeft2		= ha.add(new CBCoreMotorSpeedController("left_driveR"));
-		driveMotorRight2	= ha.add(new CBCoreMotorSpeedController("right_driveR"));
-		triggerServo        = ha.add(new CBServo("arm_servo").setRange(0,1));
+		driveMotorLeft1		= hardwareAdapter.add(new CBCoreMotorSpeedController("left_driveF"));
+		driveMotorRight1	= hardwareAdapter.add(new CBCoreMotorSpeedController("right_driveF"));
+		driveMotorLeft2		= hardwareAdapter.add(new CBCoreMotorSpeedController("left_driveR"));
+		driveMotorRight2	= hardwareAdapter.add(new CBCoreMotorSpeedController("right_driveR"));
+		triggerServo        = hardwareAdapter.add(new CBServo("arm_servo").setRange(0,1));
 
 		// Driver's Station Controls
 		telemetry.addLine("adding Driver's Station Controls");
-		forwardAxis 	= ha.add(new CBAxis(driveStickId, CBEnums.CBAxisId.Left_Y).setDeadzone(0.1));
-		forward2Axis 	= ha.add(new CBAxis(driveStickId, CBEnums.CBAxisId.Right_Y).setDeadzone(0.1));
-		triggerAxis     = ha.add(new CBAxis(operStickId, CBEnums.CBAxisId.Right_Y).setDeadzone(0.0));
+		forwardAxis 	= hardwareAdapter.add(new CBAxis(driveStickId, CBEnums.CBAxisId.Left_Y).setDeadzone(0.1));
+		forward2Axis 	= hardwareAdapter.add(new CBAxis(driveStickId, CBEnums.CBAxisId.Right_Y).setDeadzone(0.1));
+		triggerAxis     = hardwareAdapter.add(new CBAxis(operStickId, CBEnums.CBAxisId.Right_Y).setDeadzone(0.0));
 
 		//
 		// Input Mapper Initialization
@@ -154,20 +153,5 @@ public abstract class VVRobot extends Cyborg {
 		telemetry.update();
 	}
 
-	public abstract void opModeInit();
-
-	@Override
-	public void cyborgTeleopInit() {
-
-	}
-
-	@Override
-	public void cyborgTestInit() {
-		
-	}
-
-	@Override
-	public void cyborgTestPeriodic() {
-		
-	}
+	public abstract void autonomousInit();
 }

@@ -3,7 +3,6 @@ package org.firstinspires.ftc.teamcode.ct;
 import org.montclairrobotics.cyborg.Cyborg;
 import org.montclairrobotics.cyborg.devices.CBAxis;
 import org.montclairrobotics.cyborg.devices.CBDeviceID;
-import org.montclairrobotics.cyborg.devices.CBHardwareAdapter;
 import org.montclairrobotics.cyborg.mappers.CBArcadeDriveMapper;
 import org.montclairrobotics.cyborg.utils.CBEnums;
 
@@ -24,7 +23,8 @@ public abstract class CTRobot extends Cyborg {
     public void cyborgInit() {
 
         logMessage("cyborgInit: Configure Hardware Adapter");
-        Cyborg.hardwareAdapter = new CBHardwareAdapter(this);
+        // move inside cyborg itself.
+        //Cyborg.hardwareAdapter = new CBHardwareAdapter(this);
 
         // Driver's Station Controls
         logMessage("adding Driver's Station Controls");
