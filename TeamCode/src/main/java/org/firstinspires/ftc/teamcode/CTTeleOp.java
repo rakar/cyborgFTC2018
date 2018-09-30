@@ -4,12 +4,11 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.ct.CTRobot;
 import org.montclairrobotics.cyborg.core.mappers.CBTraceTeleOpMapper;
-import org.montclairrobotics.cyborg.mappers.CBArcadeDriveMapper;
+import org.montclairrobotics.cyborg.core.mappers.CBArcadeDriveMapper;
 
 
 @TeleOp(name="Cyborg Test", group="cyborg")
 public class CTTeleOp extends CTRobot {
-
     @Override
     public void opModeInit() {
        logMessage("adding TeleOpMapper",false);
