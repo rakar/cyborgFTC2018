@@ -4,7 +4,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.ct.CTRobot;
 import org.montclairrobotics.cyborg.core.mappers.CBTraceTeleOpMapper;
-import org.montclairrobotics.cyborg.core.mappers.CBArcadeDriveMapper;
+import org.montclairrobotics.cyborg.mappers.CBArcadeDriveMapper;
 
 
 @TeleOp(name="Cyborg Test", group="cyborg")

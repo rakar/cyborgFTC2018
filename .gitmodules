@@ -1,0 +1,3 @@
+[submodule "cyborgftc/src/main/java/org/montclairrobotics/cyborg/core"]
+	path = cyborgftc/src/main/java/org/montclairrobotics/cyborg/core
+	url = https://github.com/rakar/cyborgCore.git
