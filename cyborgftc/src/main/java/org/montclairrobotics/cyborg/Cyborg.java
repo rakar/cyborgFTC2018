@@ -244,4 +244,9 @@ public abstract class Cyborg extends OpMode {
         telemetry.addLine(msg);
         if(immediate) telemetry.update();
     }
+
+    public void putStringArray(String title, String[] msgs) {
+        telemetry.addLine(title);
+        for(String s:msgs) telemetry.addLine(s);
+    }
 }

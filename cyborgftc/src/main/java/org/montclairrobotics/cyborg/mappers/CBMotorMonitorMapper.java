@@ -4,6 +4,7 @@ import org.montclairrobotics.cyborg.Cyborg;
 import org.montclairrobotics.cyborg.core.mappers.CBSensorMapper;
 import org.montclairrobotics.cyborg.devices.CBDeviceID;
 import org.montclairrobotics.cyborg.devices.CBSpeedController;
+import org.montclairrobotics.cyborg.devices.CBSpeedControllerFault;
 
 import java.util.ArrayList;
 
@@ -16,7 +17,6 @@ public class CBMotorMonitorMapper extends CBSensorMapper {
 
     @Override
     public void init() {
-
     }
 
     public CBMotorMonitorMapper add(CBDeviceID controller) {
@@ -31,7 +31,6 @@ public class CBMotorMonitorMapper extends CBSensorMapper {
 
     @Override
     public void update() {
-        /*
         String[] status = new String[controllers.size()];
         int i = 0;
         for(CBSpeedController controller: controllers) {
@@ -46,7 +45,6 @@ public class CBMotorMonitorMapper extends CBSensorMapper {
             }
             status[i] = name +" "+value;
         }
-        SmartDashboard.putStringArray("MotorMonitor", status);
-        */
+        robot.putStringArray("MotorMonitor", status);
     }
 }
