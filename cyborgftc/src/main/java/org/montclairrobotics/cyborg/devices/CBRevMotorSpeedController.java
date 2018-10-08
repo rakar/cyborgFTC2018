@@ -7,13 +7,13 @@ import com.qualcomm.robotcore.hardware.PIDCoefficients;
 
 import static org.montclairrobotics.cyborg.Cyborg.hardwareAdapter;
 
-public class CBRevMotorSpeedController implements CBSpeedController {
+public class CBRevMotorSpeedController extends CBSpeedController {
     DcMotorEx mc;
     String mcName;
 
-    public CBRevMotorSpeedController(String name) {
+    public CBRevMotorSpeedController(CBDeviceID motor) {
         this.mcName = name;
-        this.mc = (DcMotorEx) hardwareAdapter.robot.hardwareMap.dcMotor.get(name);
+        this.mc = (DcMotorEx) hardwareAdapter.getSpeedController(motor);
         this.mc.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
     }
 
@@ -40,7 +40,7 @@ public class CBRevMotorSpeedController implements CBSpeedController {
     @Override
     public CBRevMotorSpeedController set(double speed) {
         mc.setPower(speed);
-        hardwareAdapter.robot.telemetry.addData("cmcPower",speed);
+        //hardwareAdapter.robot.telemetry.addData("cmcPower",speed);
         return this;
     }
 

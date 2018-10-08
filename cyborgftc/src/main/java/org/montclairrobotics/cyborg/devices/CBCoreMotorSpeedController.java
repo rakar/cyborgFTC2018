@@ -11,7 +11,7 @@ import org.montclairrobotics.cyborg.Cyborg;
 
 // TODO: Implement All modes (not just Power).
 
-public class CBCoreMotorSpeedController implements CBSpeedController {
+public class CBCoreMotorSpeedController extends CBSpeedController {
     DcMotor mc;
     String mcName;
 
