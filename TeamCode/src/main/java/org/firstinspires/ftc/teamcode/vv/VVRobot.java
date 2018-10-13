@@ -2,7 +2,7 @@ package org.firstinspires.ftc.teamcode.vv;
 
 import org.montclairrobotics.cyborg.Cyborg;
 import org.montclairrobotics.cyborg.core.assemblies.CBDriveModule;
-import org.montclairrobotics.cyborg.core.assemblies.CBVictorArrayController;
+import org.montclairrobotics.cyborg.core.assemblies.CBSimpleArrayController;
 import org.montclairrobotics.cyborg.core.behaviors.CBTankDriveBehavior;
 import org.montclairrobotics.cyborg.core.controllers.CBDifferentialDriveController;
 import org.montclairrobotics.cyborg.core.data.CBLogicData;
@@ -102,7 +102,7 @@ public abstract class VVRobot extends Cyborg {
 				.addDriveModule(
 						new CBDriveModule(new CB2DVector(-3,0), 0)
 						.addSpeedControllerArray(
-								new CBVictorArrayController()
+								new CBSimpleArrayController()
 								.setDriveMode(CBDriveMode.Power)
 								.addSpeedController(driveMotorLeft1)
 								.addSpeedController(driveMotorLeft2)
@@ -111,7 +111,7 @@ public abstract class VVRobot extends Cyborg {
 				.addDriveModule(
 						new CBDriveModule(new CB2DVector( 3,0), 180)
 						.addSpeedControllerArray(
-								new CBVictorArrayController()
+								new CBSimpleArrayController()
 								.setDriveMode(CBDriveMode.Power)
 								.addSpeedController(driveMotorRight1)
 								.addSpeedController(driveMotorRight2)

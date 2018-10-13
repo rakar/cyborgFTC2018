@@ -12,7 +12,9 @@ public class ICDSTeleOp extends ICDSRobot {
         logMessage("adding TeleOpMapper",false);
         this.addTeleOpMapper(
                 new CBArcadeDriveMapper(this, requestData.drivetrain)
-                        .setAxes(axisForward, axisStrafe, axisRotate)
+                        .setAxes(axisForward, axisStrafe, axisRotate) // for Mecanum Drive
+                        //.setAxes(axisForward, null, axisStrafe) // for Differential Drive
+                        .setDebug(true)
         );
         logMessage("added TeleOpMapper",false);
     }

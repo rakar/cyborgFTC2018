@@ -2,18 +2,17 @@ package org.montclairrobotics.cyborg.devices;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
-import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.PIDCoefficients;
 
-import static org.montclairrobotics.cyborg.Cyborg.hardwareAdapter;
+import org.montclairrobotics.cyborg.Cyborg;
 
 public class CBRevMotorSpeedController extends CBSpeedController {
     DcMotorEx mc;
     String mcName;
 
-    public CBRevMotorSpeedController(CBDeviceID motor) {
+    public CBRevMotorSpeedController(String name) {
         this.mcName = name;
-        this.mc = (DcMotorEx) hardwareAdapter.getSpeedController(motor);
+        this.mc = (DcMotorEx) Cyborg.hardwareAdapter.robot.hardwareMap.dcMotor.get(name);
         this.mc.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
     }
 
@@ -40,19 +39,19 @@ public class CBRevMotorSpeedController extends CBSpeedController {
     @Override
     public CBRevMotorSpeedController set(double speed) {
         mc.setPower(speed);
-        //hardwareAdapter.robot.telemetry.addData("cmcPower",speed);
+        Cyborg.hardwareAdapter.robot.logMessage(mcName+":"+Double.toString(speed));
         return this;
     }
 
     @Override
     public CBRevMotorSpeedController setInverted(boolean isInverted) {
-        mc.setDirection(isInverted?DcMotorSimple.Direction.REVERSE: DcMotorSimple.Direction.FORWARD);
+        mc.setDirection(isInverted?DcMotorEx.Direction.REVERSE: DcMotorEx.Direction.FORWARD);
         return this;
     }
 
     @Override
     public boolean getInverted() {
-        return mc.getDirection()== DcMotorSimple.Direction.REVERSE;
+        return mc.getDirection()== DcMotorEx.Direction.REVERSE;
     }
 
     @Override

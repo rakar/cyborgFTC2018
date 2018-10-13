@@ -2,14 +2,16 @@ package org.firstinspires.ftc.teamcode.icds;
 
 import org.montclairrobotics.cyborg.Cyborg;
 import org.montclairrobotics.cyborg.core.assemblies.CBDriveModule;
-import org.montclairrobotics.cyborg.core.assemblies.CBVictorArrayController;
+import org.montclairrobotics.cyborg.core.assemblies.CBSimpleArrayController;
 import org.montclairrobotics.cyborg.core.behaviors.CBStdDriveBehavior;
+import org.montclairrobotics.cyborg.core.controllers.CBDifferentialDriveController;
 import org.montclairrobotics.cyborg.core.controllers.CBMecanumDriveController;
 import org.montclairrobotics.cyborg.core.utils.CB2DVector;
 import org.montclairrobotics.cyborg.core.utils.CBEnums;
 import org.montclairrobotics.cyborg.devices.CBAxis;
 import org.montclairrobotics.cyborg.devices.CBCoreMotorSpeedController;
 import org.montclairrobotics.cyborg.devices.CBDeviceID;
+import org.montclairrobotics.cyborg.devices.CBRevMotorSpeedController;
 
 /**
  * This is the main robot definition class.
@@ -43,7 +45,6 @@ public abstract class ICDSRobot extends Cyborg {
             driveMotorFR, driveMotorBR,
             axisForward, axisStrafe, axisRotate;
 
-    @Override
     public void cyborgInit() {
 
         telemetry.addLine("Configure Hardware Adapter");
@@ -52,22 +53,42 @@ public abstract class ICDSRobot extends Cyborg {
         // ICDSRobot Hardware
         //
         telemetry.addLine("adding Motor Controllers");
-        driveMotorFL = hardwareAdapter.add(new CBCoreMotorSpeedController("left_driveF"));
-        driveMotorFR = hardwareAdapter.add(new CBCoreMotorSpeedController("right_driveF")
-                .setInverted(true)
-        );
-        driveMotorBL = hardwareAdapter.add(new CBCoreMotorSpeedController("left_driveR"));
-        driveMotorBR = hardwareAdapter.add(new CBCoreMotorSpeedController("right_driveR")
-                .setInverted(true)
-        );
 
+        boolean useRev = false;
+        if (useRev) {
+            driveMotorFL = hardwareAdapter.add(new CBRevMotorSpeedController("m2")
+                    .setInverted(true)
+            );
+            driveMotorFR = hardwareAdapter.add(new CBRevMotorSpeedController("m3")
+                    .setInverted(false)
+            );
+            driveMotorBL = hardwareAdapter.add(new CBRevMotorSpeedController("m1")
+                    .setInverted(true)
+            );
+            driveMotorBR = hardwareAdapter.add(new CBRevMotorSpeedController("m0")
+                    .setInverted(false)
+            );
+        } else {
+            driveMotorFL = hardwareAdapter.add(new CBCoreMotorSpeedController("leftfront")
+                    .setInverted(true)
+            );
+            driveMotorFR = hardwareAdapter.add(new CBCoreMotorSpeedController("rightfront")
+                    .setInverted(false)
+            );
+            driveMotorBL = hardwareAdapter.add(new CBCoreMotorSpeedController("leftback")
+                    .setInverted(true)
+            );
+            driveMotorBR = hardwareAdapter.add(new CBCoreMotorSpeedController("rightback")
+                    .setInverted(false)
+            );
+        }
         //
         // Driver's Station Controls
         //
         telemetry.addLine("adding Driver's Station Controls");
-        axisForward = hardwareAdapter.add(new CBAxis(driveStickId, CBEnums.CBAxisId.Right_X).setDeadzone(0.1));
-        axisStrafe = hardwareAdapter.add(new CBAxis(driveStickId, CBEnums.CBAxisId.Right_Y).setDeadzone(0.1));
-        axisRotate = hardwareAdapter.add(new CBAxis(driveStickId, CBEnums.CBAxisId.Left_Y).setDeadzone(0.0));
+        axisForward = hardwareAdapter.add(new CBAxis(driveStickId, CBEnums.CBAxisId.Right_Y).setDeadzone(0.1));
+        axisStrafe = hardwareAdapter.add(new CBAxis(driveStickId, CBEnums.CBAxisId.Right_X).setDeadzone(0.1));
+        axisRotate = hardwareAdapter.add(new CBAxis(driveStickId, CBEnums.CBAxisId.Left_X).setDeadzone(0.0));
 
         //
         // Input Sensor Mapper Initialization
@@ -77,41 +98,64 @@ public abstract class ICDSRobot extends Cyborg {
         // Output Controller Initialization
         //
         telemetry.addLine("adding Output Controllers");
-        this.addRobotController(
-                new CBMecanumDriveController(this, controlData.drivetrain)
-                        .addDriveModule(
-                                new CBDriveModule(
-                                        new CB2DVector(-7, 7), 0)
-                                        .addSpeedControllerArray(
-                                                new CBVictorArrayController()
-                                                        .addSpeedController(driveMotorFL)
+        boolean useMecanum = true;
+        if (useMecanum) {
+            this.addRobotController(
+                    new CBMecanumDriveController(this, controlData.drivetrain)
+                            .addDriveModule(
+                                    new CBDriveModule(
+                                            new CB2DVector(-7, 7), 0)
+                                            .addSpeedControllerArray(
+                                                    new CBSimpleArrayController()
+                                                            .addSpeedController(driveMotorFL)
+                                            )
+                            )
+                            .addDriveModule(
+                                    new CBDriveModule(
+                                            new CB2DVector(7, 7), 0)
+                                            .addSpeedControllerArray(
+                                                    new CBSimpleArrayController()
+                                                            .addSpeedController(driveMotorFR)
+                                            )
+                            )
+                            .addDriveModule(
+                                    new CBDriveModule(
+                                            new CB2DVector(-7, -7), 0)
+                                            .addSpeedControllerArray(
+                                                    new CBSimpleArrayController()
+                                                            .addSpeedController(driveMotorBL)
+                                            )
+                            )
+                            .addDriveModule(
+                                    new CBDriveModule(
+                                            new CB2DVector(7, -7), 0)
+                                            .addSpeedControllerArray(
+                                                    new CBSimpleArrayController()
+                                                            .addSpeedController(driveMotorBR)
+                                            )
+                            )
+            );
+        } else {
+            this.addRobotController(
+                    new CBDifferentialDriveController(this, controlData.drivetrain)
+                    .addLeftDriveModule(
+                            new CBDriveModule(new CB2DVector(-7,0), 0)
+                                .addSpeedControllerArray(
+                                            new CBSimpleArrayController()
+                                                .addSpeedController(driveMotorFL)
+                                                .addSpeedController(driveMotorBL)
                                         )
-                        )
-                        .addDriveModule(
-                                new CBDriveModule(
-                                        new CB2DVector(7, 7), 0)
-                                        .addSpeedControllerArray(
-                                                new CBVictorArrayController()
-                                                        .addSpeedController(driveMotorFR)
-                                        )
-                        )
-                        .addDriveModule(
-                                new CBDriveModule(
-                                        new CB2DVector(-7, -7), 0)
-                                        .addSpeedControllerArray(
-                                                new CBVictorArrayController()
-                                                        .addSpeedController(driveMotorBL)
-                                        )
-                        )
-                        .addDriveModule(
-                                new CBDriveModule(
-                                        new CB2DVector(-7, -7), 0)
-                                        .addSpeedControllerArray(
-                                                new CBVictorArrayController()
-                                                        .addSpeedController(driveMotorBR)
-                                        )
-                        )
-        );
+                            )
+                    .addRightDriveModule(
+                            new CBDriveModule(new CB2DVector(7,0), 0)
+                                    .addSpeedControllerArray(
+                                            new CBSimpleArrayController()
+                                                    .addSpeedController(driveMotorFR)
+                                                    .addSpeedController(driveMotorBR)
+                                    )
+                    )
+            );
+        }
 
 
         //
@@ -123,6 +167,6 @@ public abstract class ICDSRobot extends Cyborg {
         );
 
         telemetry.addLine("init done.");
-        telemetry.update();
+        //telemetry.update();
     }
 }
