@@ -28,6 +28,7 @@ public class CBServo implements CBDevice {
     }
 
     public CBServo setPosition(double position) {
+        //Cyborg.hardwareAdapter.robot.logMessage("CBServo setPosition");
         servo.setPosition(position);
         return  this;
     }

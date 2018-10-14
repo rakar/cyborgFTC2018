@@ -3,6 +3,7 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.icds.ICDSRobot;
+import org.firstinspires.ftc.teamcode.icds.ICDSTeleOpMapper;
 import org.montclairrobotics.cyborg.core.mappers.CBArcadeDriveMapper;
 
 @TeleOp(name="ICDSTeleOp", group="cyborg")
@@ -16,6 +17,9 @@ public class ICDSTeleOp extends ICDSRobot {
                         //.setAxes(axisForward, null, axisStrafe) // for Differential Drive
                         .setDebug(true)
         );
+        this.addTeleOpMapper(
+                new ICDSTeleOpMapper(this)
+                );
         logMessage("added TeleOpMapper",false);
     }
 }

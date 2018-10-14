@@ -9,4 +9,5 @@ import org.montclairrobotics.cyborg.core.data.CBStdDriveRequestData;
 
 public class ICDSRequestData extends CBRequestData {
     public CBStdDriveRequestData drivetrain = new CBStdDriveRequestData();
+    public double jawPosition =0;
 }
